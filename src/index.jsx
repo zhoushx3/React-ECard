@@ -1,6 +1,8 @@
 import React from 'React'
 import ReactDOM from 'React-Dom'
 
-import Header from './component/header.jsx'
+import App from './component/App.jsx'
 
-ReactDOM.render(<Header />, document.getElementById('container'))
+
+
+ReactDOM.render(<App />, document.getElementById('container'))

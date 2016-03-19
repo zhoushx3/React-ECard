@@ -5,4 +5,4 @@ import App from './component/App.jsx'
 
 
 
-ReactDOM.render(<App />, document.getElementById('container'))
+ReactDOM.render(<App />, document.getElementById('body'))

@@ -1,5 +1,6 @@
 import React from 'React'
 
+import Header from './Header.jsx'
 import PagePanel from './PagePanel.jsx'
 import CanvasPanel from './CanvasPanel.jsx'
 import EditorPanel from './EditorPanel.jsx'
@@ -7,12 +8,15 @@ import EditorPanel from './EditorPanel.jsx'
 import AppAction from '../action/AppAction.js'
 import Event from '../Event.js'
 import { GET_JSON } from '../constant/AppConstant'
-import '../../static/stylus/App.stylus'
+
+import '../../static/stylus/app.stylus'
 
 const App = React.createClass({
-	getIntialState() {
+	getInitialState() {
 		return {
-			json: undefined
+			json: {
+				page: []
+			}
 		}
 	},
 
@@ -26,17 +30,22 @@ const App = React.createClass({
 	},
 	// 拿到Json数据
  	_getJson(json) {
- 		console.log(json)
+ 		this.setState({
+ 			json: json
+ 		})
  	},
 
 	render() {
-		let json = this.json
+		let json = this.state.json
 
 		return (
-			<div id="container">
-				<PagePanel json={ json }></PagePanel>
-				<CanvasPanel json={ json }></CanvasPanel>
-				<EditorPanel json={ json }></EditorPanel>
+			<div>
+				<Header />
+				<div id="container">
+					<PagePanel json={ json }></PagePanel>
+					<CanvasPanel json={ json }></CanvasPanel>
+					<EditorPanel json={ json }></EditorPanel>
+				</div>
 			</div>
 		)
 	}

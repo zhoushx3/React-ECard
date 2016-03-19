@@ -1,6 +1,6 @@
 import React from 'React'
 
-// import '../../static/stylus/CanvasPanel.stylus'
+import '../../static/stylus/CanvasPanel.stylus'
 
 const CanvasPanel = React.createClass({
 	getIntialState() {
@@ -17,8 +17,10 @@ const CanvasPanel = React.createClass({
 
 	render() {
 		return (
-			<div id="v">
-				<h1>hello</h1>
+			<div id="canvasPanel">
+				<div id="canvas">
+					<h1>hello</h1>
+				</div>
 			</div>
 		)
 	}

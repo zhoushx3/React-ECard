@@ -16,7 +16,6 @@ module.exports = {
 	external: {
 		'$': 'jquery'
 	},
-	debug: true,
 	module: {
 		loaders: [{
 			test: /\.js/,
@@ -30,6 +29,9 @@ module.exports = {
 		}, {
 			test: /.html/,
 			loader: 'html-loader',
+		}, {
+			test: /.jade/,
+			loader: 'jade-loader'
 		}]
 	}
 }

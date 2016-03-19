@@ -1,6 +1,7 @@
 import React from 'React'
+import PageBlock from './PageBlock.jsx'
 
-// import '../../static/stylus/PagePanel.stylus'
+import '../../static/stylus/pagePanel.stylus'
 
 const PagePanel = React.createClass({
 	getIntialState() {
@@ -16,9 +17,22 @@ const PagePanel = React.createClass({
 	},
 
 	render() {
+		let page = this.props.json.page.map( (page, index)=>{
+			return (
+				<li key={ 'page_'+index }>
+					<PageBlock page={page} />
+					<div className="page-num">{ index+1 }</div>
+				</li>
+			)
+		})
+
 		return (
-			<div id="a">
-				<h1>hello</h1>
+			<div id="pagePanel">
+				<div id="yemian">页面</div>
+				<ul id="page-container">
+					{ page }
+				</ul>
+				<div id="add-blank-page">+</div>
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ var json = {
 		content: [{
 			type: 'pic',
 			style: '',
-			effect: '',
+			effect: ['', ''],
 		}, {
 			type: 'text',
 			style: '',

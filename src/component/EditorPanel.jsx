@@ -1,6 +1,6 @@
 import React from 'React'
 
-// import '../../static/stylus/EditorPanel.stylus'
+import '../../static/stylus/editorPanel.stylus'
 
 const EditorPanel = React.createClass({
 	getIntialState() {
@@ -17,7 +17,7 @@ const EditorPanel = React.createClass({
 
 	render() {
 		return (
-			<div id="b">
+			<div id="editorPanel">
 				<h1>hello</h1>
 			</div>
 		)

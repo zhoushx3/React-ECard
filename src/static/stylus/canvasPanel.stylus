@@ -13,4 +13,5 @@
 		width 320px
 		height 480px
 		background-color #fff
+		position relative
 	

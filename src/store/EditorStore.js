@@ -31,9 +31,8 @@ class EditorStore {
 		this.getJson()
 	}
 
-	// property: value对应css属性:值
-	setElement(id, property, value) {
-		this.json.page[this.pageIndex].content[id].style[property] = value
+	setElement(id, newValue) {
+		this.json.page[this.pageIndex].content[id] = newValue
 		this.getJson()
 	}
 }

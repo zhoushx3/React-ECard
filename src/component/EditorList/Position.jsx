@@ -1,6 +1,5 @@
 import React from 'React'
 
-
 const Position = React.createClass({
 
 	shouldComponentUpdate(nextProps) {
@@ -16,10 +15,15 @@ const Position = React.createClass({
 		let top = parseInt(this.props.top)
 
 		return (
-			<div id="position">
-				<label>位置</label>
-				<label>X<input type="number" value={left} onChange={this.setStyle.bind(null, 'left')} /></label>
-				<label>Y<input type="number" value={top}  onChange={this.setStyle.bind(null, 'top')} /></label>
+			<div id="position" className="panel-sub">
+				<div className="flex-box">
+					<label>横坐标</label>
+					<input type="number" value={left} onChange={this.setStyle.bind(null, 'left')} />
+				</div>
+				<div className="flex-box">
+					<label>纵坐标</label>
+					<input type="number" value={top}  onChange={this.setStyle.bind(null, 'top')} />
+				</div>
 			</div>
 		)	
 	}

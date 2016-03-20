@@ -14,7 +14,9 @@ var json = {
 				color: '#aaa',
 				width: '100px',
 				height: '30px',
-				fontSize: '16px'
+				fontSize: '16px',
+				textAlign: 'left',
+				lineHeight: '20px'
 			},
 			effect: ''
 		}],

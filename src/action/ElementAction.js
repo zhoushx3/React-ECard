@@ -7,8 +7,7 @@ import Store from '../store/EditorStore.js'
 Dispatcher.register( (action)=>{
 	switch(action.type) {
 		case Constant.SET_ELEMENT :
-			let { elementId, property, value } = action.data
-			Store.setElement(elementId, property, value)
+			Store.setElement(action.data.elementId, action.data.newValue)
 		 	break
 	}
 })
@@ -21,16 +20,14 @@ export default {
 	// 		})
 	// 	})
 	// },
-	// property 指style的属性, value是属性值
-	setStyle: (elementId, property, value) => {
+	setElement: (elementId, newValue) => {
 		Dispatcher.dispatch({
 			type: Constant.SET_ELEMENT,
 			data: {
 				elementId: elementId,
-				property: property,
-				value: value
+				newValue: newValue
 			}
 		})
-	}
+	}, 
 
 }

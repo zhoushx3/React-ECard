@@ -1,5 +1,4 @@
 import listener from './listener.js'
-import { CANVAS } from './conf.js'
 /*
 	DragEvent: 监听元素拖拽
 */
@@ -36,17 +35,17 @@ class DragEvent {
 
 				self.clientX = clientX
 				self.clientY = clientY
-				self.callback && self.callback()
+				self.callback && self.callback(delX, delY)
 			}
 		})
 	}
 
-	drag(elementId, eventX, eventY, callback) {
+	drag(elementId, clientX, clientY, callback) {
 		this.elementId = elementId
-		this.eventX = eventX
-		this.eventY = eventY
+		this.clientX = clientX
+		this.clientY = clientY
 		this.callback = callback
 	}
 }
 
-export default new DragEvent(CANVAS)
+export default DragEvent

@@ -30,8 +30,8 @@ const TextPanel = React.createClass({
 		return (
 			<div id="text-panel">
 				<Font element={ element } setContent={ this.setContent } setStyle={ this.setStyle } />
-				<Position left={ element.style.left } top={ element.style.top } setStyle={ this.setStyle } />
 				<TextAlign textAlign={ element.style.textAlign } setStyle={ this.setStyle } />
+				<Position left={ element.style.left } top={ element.style.top } setStyle={ this.setStyle } />
 			</div>
 		)	
 	}

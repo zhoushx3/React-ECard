@@ -6,46 +6,38 @@
 	cursor move
 	font-size 0 // 这个为了除去空格占的位置
 
-	.mask
-		position absolute
-		top 0
-		left 0
-		right 0
-		bottom 0
-		z-index 1
-
-		&:hover 
-			border 1px dashed #000
-			.flexCircle
-				display block
-
+	&:hover 
+		border 1px dashed #000
 		.flexCircle
-			width 10px
-			height 10px
-			position absolute
-			background-color #aaa
-			border-radius 50%
-			z-index 2
-			display none
+			display block
 
-		.leftToFlex, .rightToFlex
-			cursor e-resize
-			top 50%
-			margin-top -5px
+	.flexCircle
+		width 10px
+		height 10px
+		position absolute
+		background-color #aaa
+		border-radius 50%
+		z-index 2
+		display none
 
-		.leftToFlex
-			left -5px
+	.leftToFlex, .rightToFlex
+		cursor e-resize
+		top 50%
+		margin-top -5px
 
-		.rightToFlex
-			right -5px
+	.leftToFlex
+		left -5px
 
-		.topToFlex, .bottomToFlex
-			cursor n-resize
-			left 50%
-			margin-left -5px
+	.rightToFlex
+		right -5px
 
-		.topToFlex
-			top -5px
+	.topToFlex, .bottomToFlex
+		cursor n-resize
+		left 50%
+		margin-left -5px
 
-		.bottomToFlex
-			bottom -5px
+	.topToFlex
+		top -5px
+
+	.bottomToFlex
+		bottom -5px

@@ -7,10 +7,12 @@ import EditorPanel from './EditorList/EditorPanel.jsx'
 
 import EditorAction from '../action/EditorAction.js'
 import Event from '../Event.js'
+import dragEvent from '../util/dragEvent.js'
 
 import '../static/stylus/app.stylus'
 
 const JSON_DATA = 'json_data'
+const CANVAS = 'canvasPanel'
 
 const App = React.createClass({
 	getInitialState() {
@@ -26,6 +28,10 @@ const App = React.createClass({
 	componentWillMount() {
 		Event.addChangeListener(JSON_DATA, this._getJson)
 		EditorAction.getJson()
+	},
+
+	componentDidMount() {
+		window.dragEvent = new dragEvent(CANVAS)
 	},
 
 	componentWillUnmount() {

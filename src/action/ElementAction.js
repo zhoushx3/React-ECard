@@ -1,8 +1,8 @@
 import Dispatcher from '../Dispatcher'
 import dragEvent from '../util/dragEvent.js'
 
-import { GET_JSON } from '../constant/AppConstant.js'
-import AppStore from '../store/AppStore.js'
+import { GET_JSON } from '../constant/editorConstant.js'
+import EditorStore from '../store/EditorStore.js'
 /*
 	往后的store要用ensure引入
 */

@@ -1,0 +1,16 @@
+#canvasPanel
+	position absolute
+	left 160px
+	right 300px
+	top 60px
+	bottom 0
+	display flex
+	align-items center
+	justify-content space-around
+	background-color #F2F5F6
+	
+	#canvas
+		width 320px
+		height 480px
+		background-color #fff
+	

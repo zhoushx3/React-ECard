@@ -1,0 +1,23 @@
+export default {
+	GET_JSON : 'GET_JSON',
+	SELECT_PAGE: 'SELECT_PAGE',
+	ADD_PAGE: 'ADD_PAGE',
+	DELETE_PAGE: 'DELETE_PAGE',
+	SWAP_PAGE: 'SWAP_PAGE'
+	SELECT_ELEMENT: 'SELECT_ELEMENT',
+	ADD_ELEMENT: 'ADD_ELEMENT',
+	DELETE_ELEMENT: 'DELETE_ELEMENT',
+	SET_ELEMENT: 'SET_ELEMENT'
+} 
+
+/*
+GET_JSON : 				获得项目json数据
+SELECT_PAGE : 		选择页面
+ADD_PAGE : 				增加页面
+DELETE_PAGE : 		删除页面
+SWAP_PAGE : 			交换页面顺序
+SELECT_ELEMENT : 	选择页面元素ID
+ADD_ELEMENT :     给当前页面增加元素
+DELETE_ELEMENT : 	删除当前页面的元素
+SET_ELEMENT : 		对当前选择的页面元素进行的操作，包括拖动拉伸修改颜色位置etc
+*/

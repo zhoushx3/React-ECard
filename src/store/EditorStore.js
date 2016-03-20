@@ -7,7 +7,7 @@ import constant from '../constant/editorConstant.js'
 const JSON_DATA = 'json_data'
 
 class EditorStore {
-	construct() {
+	constructor() {
 		// 初始化应该从用户的项目数据里读取，暂时是读取fake数据
 		this.json = fakeJson
 		this.pageIndex = 0
@@ -22,14 +22,20 @@ class EditorStore {
 	setPageIndex(index) {
 		this.pageIndex = index
 		this.elementId = undefined
+		this.getJson()
 	}
 
-	setElementId(id) {
+	selectElement(id) {
 		// 直接复制与set有什么区别？为了添加callback?
 		this.elementId = id
-	},
+		this.getJson()
+	}
+
+	// property: value对应css属性:值
+	setElement(id, property, value) {
+		this.json.page[this.pageIndex].content[id].style[property] = value
+		this.getJson()
+	}
 }
 
-var store = new EditorStore()
-
-export default store
+export default new EditorStore()

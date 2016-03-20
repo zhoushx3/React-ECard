@@ -1,6 +1,6 @@
 import React from 'React'
 
-import '../../static/stylus/header.stylus'
+import '../static/stylus/header.stylus'
 
 const Header = React.createClass({
 	render() {

@@ -1,7 +1,7 @@
 import React from 'React'
 import PageBlock from './PageBlock.jsx'
 
-import '../../static/stylus/pagePanel.stylus'
+import '../static/stylus/pagePanel.stylus'
 
 const PagePanel = React.createClass({
 	getIntialState() {

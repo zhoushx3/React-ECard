@@ -7,7 +7,15 @@ var json = {
 			effect: ['', ''],
 		}, {
 			type: 'text',
-			style: '',
+			content: 'hello man',
+			style: {
+				left: '100px',
+				top: '100px',
+				color: '#aaa',
+				width: '100px',
+				height: '30px',
+				fontSize: '16px'
+			},
 			effect: ''
 		}],
 		pageEffect: ''

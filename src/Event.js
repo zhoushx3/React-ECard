@@ -2,8 +2,8 @@ import { EventEmitter } from 'events'
 import assign from 'object-assign'
 
 var EventStore = assign({}, EventEmitter.prototype, {
-	emitChange: function(EVENT, args){
-		this.emit(EVENT, args);
+	emitChange: function(EVENT, ...args){
+		this.emit(EVENT, ...args);
 	},
 
 	/**

@@ -10,13 +10,24 @@ Dispatcher.register( (action)=>{
 		case Constant.SELECT_PAGE :
 			Store.setPageIndex(action.data.index)
 			break
+		case Constant.SELECT_ELEMENT :
+			Store.selectElement(action.data.elementId)
+			break
 	}
 })
 
 export default {
 	getJson: ()=>{
 		Dispatcher.dispatch({
-			type: GET_JSON
+			type: Constant.GET_JSON
+		})
+	},
+	setElementId: (id)=>{
+		Dispatcher.dispatch({
+			type: Constant.SELECT_ELEMENT,
+			data: {
+				elementId: id
+			}
 		})
 	}
 }

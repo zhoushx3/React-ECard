@@ -7,7 +7,8 @@ import EditorPanel from './EditorList/EditorPanel.jsx'
 
 import EditorAction from '../action/EditorAction.js'
 import Event from '../Event.js'
-import '../../static/stylus/app.stylus'
+
+import '../static/stylus/app.stylus'
 
 const JSON_DATA = 'json_data'
 
@@ -17,7 +18,7 @@ const App = React.createClass({
 			json: {
 				page: []
 			},
-			pageIndex: undefined,
+			pageIndex: 0,
 			elementId: undefined
 		}
 	},
@@ -27,9 +28,10 @@ const App = React.createClass({
 		EditorAction.getJson()
 	},
 
-	componentDidMount() {
+	componentWillUnmount() {
 		Event.removeChangeListener(JSON_DATA, this._getJson)
 	},
+
 	// 拿到Json数据
  	_getJson(json, pageIndex, elementId) {
  		this.setState({
@@ -41,7 +43,9 @@ const App = React.createClass({
 
 	render() {
 		let json = this.state.json
-		let page = this.state.json
+		let page = json.page[this.state.pageIndex]
+		let elementId = this.state.elementId
+		let element = elementId ? page.content[elementId] : undefined
 
 		return (
 			<div>
@@ -49,7 +53,7 @@ const App = React.createClass({
 				<div id="container">
 					<PagePanel json={ json }></PagePanel>
 					<CanvasPanel page={ page }></CanvasPanel>
-					<EditorPanel json={ json }></EditorPanel>
+					<EditorPanel element={ element } elementId={ elementId }></EditorPanel>
 				</div>
 			</div>
 		)

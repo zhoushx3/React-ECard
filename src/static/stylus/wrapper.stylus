@@ -2,6 +2,7 @@
 	position absolute
 	outline none
 	left 0
+	top 0
 	cursor move
 	font-size 0 // 这个为了除去空格占的位置
 

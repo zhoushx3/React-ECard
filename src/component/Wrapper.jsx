@@ -22,7 +22,7 @@ const ElementWrapper = React.createClass({
 	flex(direction, event) {
 		event.preventDefault()
 		event.stopPropagation()
-		// ElementAction.flex(this.props.elementId, event.target.clientX, event.target.clientY, direction)
+		ElementAction.flex(this.props.element, this.props.elementId, event.clientX, event.clientY, direction)
 	},
 
 	setElementId(event) {
@@ -31,17 +31,20 @@ const ElementWrapper = React.createClass({
 
 	render() {
 		let style = this.props.element.style
+		let selectElementId = this.props.elementId
+		let elementId = this.props.elementId
+		let className = selectElementId == elementId ? 'wrapper active' : 'wrapper'
 
 		return (
-			<div className="wrapper"
+			<div className={ className }
 					 style={ style }
 					 onClick={ this.setElementId }
 					 onMouseDown={ this.drag } >
 				{ this.props.children }
-				<div className="leftToFlex flexCircle" onMouseDown={this.drag.bind(null, 'left')}></div>
-				<div className="rightToFlex flexCircle" onMouseDown={this.drag.bind(null, 'rifgt')}></div>
-				<div className="topToFlex flexCircle" onMouseDown={this.drag.bind(null, 'top')}></div>
-				<div className="bottomToFlex flexCircle" onMouseDown={this.drag.bind(null, 'bottom')}></div>
+				<div className="leftToFlex flexCircle" onMouseDown={this.flex.bind(null, 'left')}></div>
+				<div className="rightToFlex flexCircle" onMouseDown={this.flex.bind(null, 'right')}></div>
+				<div className="topToFlex flexCircle" onMouseDown={this.flex.bind(null, 'top')}></div>
+				<div className="bottomToFlex flexCircle" onMouseDown={this.flex.bind(null, 'bottom')}></div>
 			</div>
 		)
 	}

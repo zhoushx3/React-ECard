@@ -22,10 +22,11 @@ const CanvasPanel = React.createClass({
 
 	render() {
 		let contents =this.props.page.content
+		let selectElementId = this.props.elementId
 		let elements = contents.map( (element, i)=>{
 			switch(element.type) {
 				case 'text':
-					return <Text key={i} element={ element } elementId={i}/>
+					return <Text key={i} element={ element } elementId={i} selectElementId={selectElementId} />
 					break
 				default :
 					return null

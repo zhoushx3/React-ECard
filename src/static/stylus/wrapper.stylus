@@ -6,7 +6,7 @@
 	cursor move
 	font-size 0 // 这个为了除去空格占的位置
 
-	&:hover 
+	&:hover, &.active 
 		border 1px dashed #000
 		.flexCircle
 			display block

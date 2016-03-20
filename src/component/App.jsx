@@ -8,6 +8,7 @@ import EditorPanel from './EditorList/EditorPanel.jsx'
 import EditorAction from '../action/EditorAction.js'
 import Event from '../Event.js'
 import dragEvent from '../util/dragEvent.js'
+import flexEvent from '../util/flexEvent.js'
 
 import '../static/stylus/app.stylus'
 
@@ -32,6 +33,7 @@ const App = React.createClass({
 
 	componentDidMount() {
 		window.dragEvent = new dragEvent(CANVAS)
+		window.flexEvent = new flexEvent(CANVAS)
 	},
 
 	componentWillUnmount() {
@@ -58,7 +60,7 @@ const App = React.createClass({
 				<Header />
 				<div id="container">
 					<PagePanel json={ json }></PagePanel>
-					<CanvasPanel page={ page }></CanvasPanel>
+					<CanvasPanel page={ page } elementId={ elementId }></CanvasPanel>
 					<EditorPanel element={ element } elementId={ elementId }></EditorPanel>
 				</div>
 			</div>

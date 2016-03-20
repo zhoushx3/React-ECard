@@ -1,5 +1,4 @@
 import listener from './listener.js'
-import { CANVAS } from './conf.js'
 /*
 	FlexEvent: 监听元素拉伸
 */
@@ -27,45 +26,38 @@ class FlexEvent {
 			self.callback = undefined
 		})
 
-		Listener(this.container, 'mousemove', (event)=>{
+		listener(this.container, 'mousemove', (event)=>{
 			if ( self.elementId  ) {
 
 				let clientX = event.clientX,
 						clientY = event.clientY,
 						delX = clientX - self.clientX,
 						delY = clientY - self.clientY,
-						direction = self.direction,
-						elementId  = self.elementId
+						direction = self.direction
 
 				switch (direction) {
 					case 'left':
-						self.clientX = clientX
-						self.callback(elementId, delX, direction)
-					break
 					case 'right':
 						self.clientX = clientX
-						self.callback(elementId, delX, direction)
+						self.callback(delX)
 					break
 					case 'top':
-						self.clientY = clientY
-						self.callback(elementId, delY, direction)
-					break
 					case 'bottom':
 						self.clientY = clientY
-						self.callback(elementId, delY, direction)
+						self.callback(delY)
 					break
 				}
 			}
 		})
 	}
 
-	flex(elementId, eventX, eventY, direction, callback) {
+	flex(elementId, clientX, clientY, direction, callback) {
 		this.elementId = elementId
-		this.eventX = eventX
-		this.eventY = eventY
+		this.clientX = clientX
+		this.clientY = clientY
 		this.direction = direction
 		this.callback = callback
 	}
 }
 
-export default new FlexEvent(CANVAS)
+export default FlexEvent

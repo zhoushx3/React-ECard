@@ -31,7 +31,7 @@
 
 	
 // 位置板块
-#position, #text-font
+#position, #text-font, #size
 	width 100%
 	
 	.flex-box

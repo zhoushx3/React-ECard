@@ -1,5 +1,3 @@
-import React from 'React'
-
 const Position = React.createClass({
 
 	shouldComponentUpdate(nextProps) {

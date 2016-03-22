@@ -18,7 +18,7 @@ class ElementAction {
 			}
 		})
 	}
-
+	// 拖拽元素
  	drag(element, elementId, eventX, eventY) {
  		let self = this
 
@@ -29,7 +29,7 @@ class ElementAction {
 			self.setElement(elementId, element)
 		})
 	}
-
+	// 拉伸元素
  	flex(element, elementId, eventX, eventY, direction) {
  		let self = this
 
@@ -37,7 +37,7 @@ class ElementAction {
 			self._processFlex(element, elementId, del, direction)
 		})
 	}
-
+	// 处理拉伸
 	_processFlex(element, elementId, del, direction) {
 		let minW = 10
 		let minH = 10
@@ -65,6 +65,16 @@ class ElementAction {
 			break
 		}
 
+		this.setElement(elementId, element)
+	}
+	// 添加动态效果
+	changeEffect(element, elementId, effect, way) {
+		if (element.effect[way])
+			element.effect[way]['effect'] = effect
+		else 
+			element.effect[way] = {
+				effect: effect
+			}
 		this.setElement(elementId, element)
 	}
 

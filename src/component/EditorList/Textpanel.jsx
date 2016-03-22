@@ -1,4 +1,3 @@
-import React from 'React'
 import Font from './Font.jsx'
 import Size from './Size.jsx'
 import Position from './Position.jsx'
@@ -30,7 +29,7 @@ const TextPanel = React.createClass({
 		let elementId = this.props.elementId
 
 		return (
-			<div id="text-panel">
+			<div id="text-panel" className={ this.props.className }>
 				<Font element={ element } setContent={ this.setContent } setStyle={ this.setStyle } />
 				<TextAlign textAlign={ element.style.textAlign } setStyle={ this.setStyle } />
 				<Size width={ element.style.width } height={ element.style.height } setStyle={ this.setStyle } />

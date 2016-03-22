@@ -1,5 +1,3 @@
-import React from 'React'
-
 const Size = React.createClass({
 
 	shouldComponentUpdate(nextProps) {

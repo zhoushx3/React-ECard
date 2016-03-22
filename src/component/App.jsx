@@ -1,5 +1,3 @@
-import React from 'React'
-
 import Header from './Header.jsx'
 import PagePanel from './PagePanel.jsx'
 import CanvasPanel from './CanvasElement/CanvasPanel.jsx'

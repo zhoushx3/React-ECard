@@ -1,4 +1,3 @@
-import React from 'React'
 import Wrapper from '../Wrapper.jsx'
 
 const Text = React.createClass({

@@ -1,4 +1,3 @@
-import React from 'React'
 import Text from './Text.jsx'
 
 import '../../static/stylus/CanvasPanel.stylus'

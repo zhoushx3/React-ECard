@@ -1,4 +1,3 @@
-import React from 'React'
 
 import '../static/stylus/header.stylus'
 

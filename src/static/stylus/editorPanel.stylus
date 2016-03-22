@@ -1,12 +1,48 @@
 #editorPanel
 	position absolute
 	width 300px
-	padding	10px
+	padding	0 10px 10px 10px
 	right 0
 	top 60px
 	bottom 0
 	font-size 14px
 	line-height 20px
+	overflow-x hidden
+	overflow-y auto
+
+	#tab
+		display flex
+		div
+			width 33.3333%
+			height 30px
+			text-align center
+			line-height 30px
+			background-color #fff
+			color #16e4d8
+			border 1px solid #16e4d8
+			border-left none
+			font-size 13px
+			cursor pointer
+			
+			&:first-child
+				border-left 1px solid #16e4d8
+			
+			&.active
+				background-color #16e4d8
+				color #fff
+	#tab-items
+		display flex
+		.tab-item
+			width 100%
+			display none
+			&.active
+				display block
+			
+		.no-select
+			font-size 30px
+			width 100px
+			height 200px
+			line-height 200px
 
 	#text-panel
 		width 100%
@@ -21,13 +57,14 @@
 			width 20%
 			display inline-block
 			text-align left
+		input 
+			width 60%
 			
 		.flex-box
 			width 80%
 			display	flex
 			flex-direction row
 			justify-content space-around
-	
 
 	
 // 位置板块
@@ -38,13 +75,17 @@
 		width 50% !important
 		label 
 			width	30%
-		input
-			width 60%
-			background-color #fff
-			border-radius 2px
-			border 1px solid #ececec
-			margin-left 3px
-			text-align center
+			
+// 范围调整
+#Percentage
+	width 100%
+	label
+		width 30%
+	input[type="range"]
+		width 50%
+	input[type="number"]
+		width 20%
+	
 
 // 文字对齐板块
 #text-align
@@ -71,6 +112,48 @@
 		border-radius 2px
 		border 1px solid #ececec
 	
+
+// 特效版块
+.effectBox
+	display flex
+	flex-direction row
+	justify-content space-around
+	align-content flex-start
+	flex-wrap wrap
+	overflow hidden
+
+	.effectModule
+		background-color #E1E1E1
+		width 56px
+		height 56px
+		line-height 56px
+		font-size 12px
+		color #416B68
+		text-align center
+		cursor pointer
+		border-radius 50%
+		margin 5px
+
+		&.active, &:hover
+			background-color #A0ECDF
+			color #fff
+		
+
+
+
+
+
+
+
+
+input[type="number"], 
+input[type="text"]
+	background-color #fff
+	border-radius 2px
+	border 1px solid #ececec
+	margin-left 3px
+	text-align center
+
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button{

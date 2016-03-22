@@ -3,8 +3,11 @@ var json = {
 	page: [{
 		content: [{
 			type: 'pic',
-			style: '',
-			effect: ['', ''],
+			style: {},
+			effect: {
+				in: null,
+				// out: null,暂时不考虑出场动画
+			},
 		}, {
 			type: 'text',
 			content: 'hello man',
@@ -18,7 +21,13 @@ var json = {
 				textAlign: 'left',
 				lineHeight: '20px'
 			},
-			effect: ''
+			effect: {
+				in: {
+					effect: 'bounceIn'
+				}
+				// out: null
+			},
+			lettering: false // 是否碎字
 		}],
 		pageEffect: ''
 	}],

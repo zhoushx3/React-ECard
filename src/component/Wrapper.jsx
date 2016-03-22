@@ -1,4 +1,3 @@
-import React from 'React'
 import ElementAction from '../action/ElementAction.js'
 import EditorAction from '../action/EditorAction.js'
 
@@ -9,6 +8,10 @@ const ElementWrapper = React.createClass({
 		element: React.PropTypes.object.isRequired,
 		elementId: React.PropTypes.any.isRequired
 	},
+
+	componentDidMount() {},
+
+	componentDidUpdate() {},
 
 	// 拖拽
 	drag(event) {
@@ -30,16 +33,19 @@ const ElementWrapper = React.createClass({
 	},
 
 	render() {
-		let style = this.props.element.style
-		let selectElementId = this.props.elementId
+		let element = this.props.element
 		let elementId = this.props.elementId
-		let className = selectElementId == elementId ? 'wrapper active' : 'wrapper'
+		let selectElementId = this.props.selectElementId
+		let style = element.style
+		let className = selectElementId == elementId ? 'wrapper active animated' : 'wrapper animated'
+		let effect = element.effect
+		let effectIn = effect['in'] ? ( effect['in']['effect'] ? effect['in']['effect'] : undefined ) : undefined
+
+		if (effectIn) 
+			className += ` ${effectIn}`
 
 		return (
-			<div className={ className }
-					 style={ style }
-					 onClick={ this.setElementId }
-					 onMouseDown={ this.drag } >
+			<div className={ className } style={ style } onClick={ this.setElementId } onMouseDown={ this.drag } ref="wrapper">
 				{ this.props.children }
 				<div className="leftToFlex flexCircle" onMouseDown={this.flex.bind(null, 'left')}></div>
 				<div className="rightToFlex flexCircle" onMouseDown={this.flex.bind(null, 'right')}></div>

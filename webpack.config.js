@@ -9,12 +9,10 @@ module.exports = {
 		path: 'build',
 		// publicPath: 'build'
 	},
-	alias: {
+	external: {
+		'$': 'jquery',
 		'React': 'react',
 		'React-Dom': 'react-dom'
-	},
-	external: {
-		'$': 'jquery'
 	},
 	module: {
 		loaders: [{
@@ -27,6 +25,9 @@ module.exports = {
 		}, {
 			test: /\.styl/,
 			loader: 'style-loader!css-loader!stylus-loader'
+		}, {
+			test: /\.css/,
+			loader: 'style-loader!css-loader'
 		}, {
 			test: /.html/,
 			loader: 'html-loader',

@@ -1,5 +1,3 @@
-import React from 'React'
-
 const TextAlign = React.createClass({
 
 	shouldComponentUpdate(nextProps) {

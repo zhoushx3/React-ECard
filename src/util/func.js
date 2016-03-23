@@ -45,7 +45,7 @@ export function deepCompare(comp1, comp2) {
 		if ( Object.keys(comp1).length !== Object.keys(comp2).length ) return false
 
 		for ( let key in comp1 ) {
-			if ( !( key in comp2 ) ) return false
+			if ( !comp2.hasOwnProperty(key) ) return false
 			if ( !deepCompare(comp1[key], comp2[key]) ) return false
 		}
 

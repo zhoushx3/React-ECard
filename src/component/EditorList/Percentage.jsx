@@ -1,10 +1,8 @@
+import ElementAction from '../../action/ElementAction.js'
+
 const Percentage = React.createClass({
 	propTypes: {
 		type: React.PropTypes.string.isRequired,
-	},
-
-	shouldComponentUpdate(nextProps) {
-		return nextProps.value !== this.props.value
 	},
 
 	setStyle(min, max, event) {
@@ -12,15 +10,7 @@ const Percentage = React.createClass({
 		value = isNaN(value) ? 0 : value
 		value = value < 0 ? 0 : value
 		value = value > max ? max : value
-
-		switch (this.props.type) {
-			case 'opacity':
-				this.props.setStyle('opacity', value/100)
-				break
-			case 'rotate':
-				this.props.setStyle('transform', `rotate(${value}deg)`)
-				break
-		}
+		ElementAction.setStyle(this.props.type, value)
 	},
 
 	render() {

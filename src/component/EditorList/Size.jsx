@@ -1,12 +1,6 @@
+import ElementAction from '../../action/ElementAction.js'
+
 const Size = React.createClass({
-
-	shouldComponentUpdate(nextProps) {
-		return nextProps.width !== this.props.width || nextProps.height !== this.props.height
-	},
-
-	setStyle(property, event) {
-		this.props.setStyle(property, (event.target.value || 0)+'px')
-	},
 
 	render() {
 		let width = parseInt(this.props.width)
@@ -16,11 +10,11 @@ const Size = React.createClass({
 			<div id="size" className="panel-sub">
 				<div className="flex-box">
 					<label>宽度</label>
-					<input type="number" value={width} onChange={this.setStyle.bind(null, 'width')} />
+					<input type="number" value={width} onChange={ ElementAction.setStyle.bind(ElementAction, 'width') } />
 				</div>
 				<div className="flex-box">
 					<label>高度</label>
-					<input type="number" value={height}  onChange={this.setStyle.bind(null, 'height')} />
+					<input type="number" value={height}  onChange={ ElementAction.setStyle.bind(ElementAction, 'height') } />
 				</div>
 			</div>
 		)	

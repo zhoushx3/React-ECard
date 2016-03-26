@@ -10,7 +10,7 @@ module.exports = {
 		// publicPath: 'build'
 	},
 	external: {
-		'$': 'jquery',
+		// '$': 'jquery',
 		'React': 'react',
 		'React-Dom': 'react-dom'
 	},

@@ -52,6 +52,7 @@
 		padding 20px 0
 		display flex
 		justify-content space-around
+		flex-wrap wrap
 		
 		label
 			width 20%
@@ -69,12 +70,19 @@
 	
 // 位置板块
 #position, #text-font, #size
-	width 100%
-	
 	.flex-box
 		width 50% !important
 		label 
-			width	30%
+			width	35%
+
+#other-panel
+	.flex-box
+		width 100% !important
+		label
+			width 30%
+		select, input
+			width 50%
+			
 			
 // 范围调整
 #Percentage
@@ -103,6 +111,13 @@
 			background-color #16E4D8
 			color #fff
 
+// 字符间距
+#letterSpacing
+	.flex-box
+		label
+			width 40%
+		input 
+			width 50%
 // 文字内容
 #text-content
 	textarea
@@ -164,3 +179,4 @@ input[type="number"]::-webkit-inner-spin-button{
 input[type="number"] {
   -moz-appearance:textfield;
 }
+

@@ -8,6 +8,7 @@
 	align-items center
 	justify-content space-around
 	background-color #F2F5F6
+	overflow hidden
 	
 	#canvas
 		width 320px

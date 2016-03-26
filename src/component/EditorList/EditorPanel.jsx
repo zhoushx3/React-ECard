@@ -1,4 +1,5 @@
 import TextPanel from './TextPanel.jsx'
+import OtherPanel from './OtherPanel.jsx'
 import EffectPanel from './EffectPanel.jsx'
 
 import '../../static/stylus/editorPanel.stylus'
@@ -27,11 +28,12 @@ const EditorPanel = React.createClass({
 
 	render() {
 		let element = this.props.element
-		let elementId = this.props.elementId
+		let selectElementId = this.props.selectElementId
 		let tool = null
+		let other = null
 		let effect = null
 
-		let tabs = ['基本', '特效', '过场'].map( (item, i)=>{
+		let tabs = ['基本', '过场', '特效'].map( (item, i)=>{
 			let className = i == this.state.tab ? 'active' : ''
 
 			return <div className={ className } onClick={ this.changeTab.bind(null, i) } key={ i }>{ item }</div>
@@ -40,8 +42,9 @@ const EditorPanel = React.createClass({
 		if (element) {
 			switch (element.type) {
 				case 'text':
-					tool = <TextPanel className={ this.state.tab == 0 ? 'tab-item active' : 'tab-item' } element={ element } elementId={ elementId } />
-					effect = <EffectPanel className={ this.state.tab == 1 ? 'tab-item active' : 'tab-item' } element={ element } elementId={ elementId } />
+					tool = <TextPanel className={ this.state.tab == 0 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
+					effect = <EffectPanel className={ this.state.tab == 1 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
+					other = <OtherPanel className={ this.state.tab == 2 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
 				break
 			}
 		}
@@ -54,6 +57,7 @@ const EditorPanel = React.createClass({
 				<div id="tab-items">
 					{ tool }
 					{ effect }
+					{ other }
 				</div>
 			</div>
 		)

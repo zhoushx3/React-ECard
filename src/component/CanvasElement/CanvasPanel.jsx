@@ -21,7 +21,7 @@ const CanvasPanel = React.createClass({
 
 	render() {
 		let contents =this.props.page.content
-		let selectElementId = this.props.elementId
+		let selectElementId = this.props.selectElementId
 		let elements = contents.map( (element, i)=>{
 			switch(element.type) {
 				case 'text':

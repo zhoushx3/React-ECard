@@ -11,7 +11,7 @@ Dispatcher.register( (action)=>{
 			Store.setPageIndex(action.data.index)
 			break
 		case Constant.SELECT_ELEMENT :
-			Store.selectElement(action.data.elementId)
+			Store.resetElementId(action.data.selectElementId)
 			break
 	}
 })
@@ -22,11 +22,12 @@ export default {
 			type: Constant.GET_JSON
 		})
 	},
-	setElementId: (id)=>{
+	
+	resetElementId: (id)=>{
 		Dispatcher.dispatch({
 			type: Constant.SELECT_ELEMENT,
 			data: {
-				elementId: id
+				selectElementId: id
 			}
 		})
 	}

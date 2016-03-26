@@ -1,48 +1,38 @@
-import Dispatcher from '../Dispatcher'
+// import Dispatcher from '../Dispatcher'
 
 import Constant from '../constant/editorConstant.js'
 import Store from '../store/EditorStore.js'
-import { upper, lower } from '../util/func.js'
+import { upper, lower, deepCopy } from '../util/func.js'
 
 class ElementAction {
-	constructor() {
-		this.init()
-	}
+	constructor() {}
 
-	init() {
-		Dispatcher.register( (action)=>{
-			switch(action.type) {
-				case Constant.SET_ELEMENT :
-					Store.setElement(action.data.elementId, action.data.newValue)
-				 	break
-			}
-		})
-	}
 	// 拖拽元素
- 	drag(element, elementId, eventX, eventY) {
+ 	drag(elementId, eventX, eventY) {
  		let self = this
+ 		Store.resetElementId(elementId)
 
 		window.dragEvent.drag(elementId, eventX, eventY, (delX, delY) => {
-			element.style.left = parseInt(element.style.left) + delX + 'px'
-			element.style.top = parseInt(element.style.top) + delY + 'px'
-
-			self.setElement(elementId, element)
+			let ele = Store.selectElement
+			ele.style.left = parseInt(ele.style.left) + delX + 'px'
+			ele.style.top = parseInt(ele.style.top) + delY + 'px'
+			Store.setElement(ele)
 		})
 	}
 	// 拉伸元素
- 	flex(element, elementId, eventX, eventY, direction) {
+ 	flex(elementId, eventX, eventY, direction) {
  		let self = this
 
 		window.flexEvent.flex(elementId, eventX, eventY, direction, (del) => {
-			self._processFlex(element, elementId, del, direction)
+			self._processFlex(del, direction)
 		})
 	}
 	// 处理拉伸
-	_processFlex(element, elementId, del, direction) {
+	_processFlex(del, direction) {
 		let minW = 10
 		let minH = 10
-
-		let style = element['style']
+		let ele = Store.selectElement
+		let style = ele['style']
 		let left = parseInt(style['left'])
 		let top = parseInt(style['top'])
 		let width = parseInt(style['width'])
@@ -65,27 +55,65 @@ class ElementAction {
 			break
 		}
 
-		this.setElement(elementId, element)
+		Store.setElement(ele)
 	}
-	// 添加动态效果
-	changeEffect(element, elementId, effect, way) {
+	// 添加过场动画效果
+	// 深复制是为了做 componentShouldUpdate()的判断, 下同
+	changeEffect(effect, way) {
+		let element = deepCopy(Store.selectElement)
+
 		if (element.effect[way])
 			element.effect[way]['effect'] = effect
 		else 
 			element.effect[way] = {
 				effect: effect
 			}
-		this.setElement(elementId, element)
+		Store.setElement(element)
 	}
+	// 添加文字特效
+	changeLetteringEffect(effect, delay, initDelay) {
+		let element = deepCopy(Store.selectElement)
 
-	setElement(elementId, newValue){
-		Dispatcher.dispatch({
-			type: Constant.SET_ELEMENT,
-			data: {
-				elementId: elementId,
-				newValue: newValue
-			}
-		})
+		if (effect == null)
+			element.lettering = null
+		else {
+			element.lettering['effect'] = effect
+			element.lettering['delay'] = delay
+			element.lettering['initDelay'] = initDelay
+		}
+		Store.setElement(element)
+	}
+	// 设置样式
+	// event == event(事件本身) || value(传入前已被修改的value)
+	setStyle(property, event) {
+		let ele = Store.selectElement
+
+		switch ( property ) {
+			case 'letterSpacing':
+			case 'lineHeight':
+			case 'fontSize':
+			case 'height':
+			case 'width':
+			case 'left':
+			case 'top':
+				ele.style[property] = ( event.target.value || 0 ) + 'px'
+				break
+			case 'content':
+				ele.content = event.target.value ? event.target.value.substr(0, 100) : ''
+				break
+			case 'opacity':
+				ele.style['opacity'] = event/100
+				break
+			case 'rotate':
+				ele.style['transform'] = `rotate(${event}deg)`
+				break
+			case 'textAlign':
+				ele.style['textAlign'] = event
+				break
+
+		}
+
+		Store.setElement(ele) // 重点是为了让 store 通知更新 View 
 	}
 }
 

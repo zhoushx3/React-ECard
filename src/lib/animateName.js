@@ -1,4 +1,5 @@
 export default {
+	'X': null,
 	bounce : '弹跳',
 	flash: '闪烁',
 	pulse: '脉动',

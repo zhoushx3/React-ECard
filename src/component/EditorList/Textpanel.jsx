@@ -6,36 +6,23 @@ import Percentage from './Percentage.jsx'
 
 import ElementAction from '../../action/ElementAction.js'
 
-
 const TextPanel = React.createClass({
 	propTypes: {
 		element: React.PropTypes.object.isRequired
 	},
 
-	setStyle(property, value) {
-		let element = this.props.element
-		element.style[property] = value
-		ElementAction.setElement(this.props.elementId, element)
-	},
-
-	setContent(event) {
-		let element = this.props.element
-		element.content = event.target.value
-		ElementAction.setElement(this.props.elementId, element)
-	},
-
 	render() {
 		let element = this.props.element
-		let elementId = this.props.elementId
+		let selectElementId = this.props.selectElementId
 
 		return (
 			<div id="text-panel" className={ this.props.className }>
-				<Font element={ element } setContent={ this.setContent } setStyle={ this.setStyle } />
-				<TextAlign textAlign={ element.style.textAlign } setStyle={ this.setStyle } />
-				<Size width={ element.style.width } height={ element.style.height } setStyle={ this.setStyle } />
-				<Position left={ element.style.left } top={ element.style.top } setStyle={ this.setStyle } />
-				<Percentage type="opacity" value={ element.style.opacity } setStyle={ this.setStyle } />
-				<Percentage type="rotate" value={ element.style.transform } setStyle={ this.setStyle } />
+				<Font element={ element } setContent={ this.setContent } />
+				<TextAlign textAlign={ element.style.textAlign } />
+				<Size width={ element.style.width } height={ element.style.height } />
+				<Position left={ element.style.left } top={ element.style.top } />
+				<Percentage type="opacity" value={ element.style.opacity } />
+				<Percentage type="rotate" value={ element.style.transform } />
 			</div>
 		)	
 	}

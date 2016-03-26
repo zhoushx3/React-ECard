@@ -1,4 +1,5 @@
 import ElementAction from '../../action/ElementAction.js'
+import ColorPicker from './ColorPicker.jsx'
 
 const Font = React.createClass({
 	
@@ -6,6 +7,8 @@ const Font = React.createClass({
 		let element = this.props.element
 		let lineHeight = parseInt(element.style.lineHeight)
 		let fontSize = parseInt(element.style.fontSize)
+		let letterSpacing = parseInt(element.style.letterSpacing)
+		let color = element.style.color
 		let content = element.content
 
 		return (
@@ -24,6 +27,16 @@ const Font = React.createClass({
 					<div className="flex-box">
 						<label>行距</label>
 						<input type="number" value={ lineHeight } onChange={ ElementAction.setStyle.bind(ElementAction, 'lineHeight')} />
+					</div>
+				</div>
+				<div id="letterSpacing" className="panel-sub">
+					<div className="flex-box">
+						<label>字符间距</label>
+						<input type="number" value={ letterSpacing } onChange={ ElementAction.setStyle.bind(ElementAction, 'letterSpacing')} />
+					</div>
+					<div className="flex-box">
+						<label>颜色</label>
+						<ColorPicker type="color" value={ color} />
 					</div>
 				</div>
 			</div>

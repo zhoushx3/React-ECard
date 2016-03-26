@@ -20,7 +20,7 @@ const App = React.createClass({
 				page: []
 			},
 			pageIndex: 0,
-			elementId: undefined
+			selectElementId: undefined
 		}
 	},
 
@@ -39,27 +39,27 @@ const App = React.createClass({
 	},
 
 	// 拿到Json数据
- 	_getJson(json, pageIndex, elementId) {
+ 	_getJson(json, pageIndex, selectElementId) {
  		this.setState({
  			json: json,
  			pageIndex: pageIndex,
- 			elementId: elementId
+ 			selectElementId: selectElementId
  		})
  	},
 
 	render() {
 		let json = this.state.json
 		let page = json.page[this.state.pageIndex]
-		let elementId = this.state.elementId
-		let element = elementId ? page.content[elementId] : undefined
+		let selectElementId = this.state.selectElementId
+		let element = selectElementId ? page.content[selectElementId] : undefined
 
 		return (
 			<div>
 				<Header />
 				<div id="container">
 					<PagePanel json={ json }></PagePanel>
-					<CanvasPanel page={ page } elementId={ elementId }></CanvasPanel>
-					<EditorPanel element={ element } elementId={ elementId }></EditorPanel>
+					<CanvasPanel page={ page } selectElementId={ selectElementId }></CanvasPanel>
+					<EditorPanel element={ element } selectElementId={ selectElementId }></EditorPanel>
 				</div>
 			</div>
 		)

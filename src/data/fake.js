@@ -10,16 +10,20 @@ var json = {
 			},
 		}, {
 			type: 'text',
-			content: 'hello man',
+			content: `梦里梦到醒不来的梦, 红线里被软禁的红.所有刺激剩下疲乏的痛, 再无动于衷.
+								从背后抱你的时候, 期待的却是她的面容.
+								说来实在嘲讽,我不太懂, 偏渴望你懂.
+								是否幸福轻得太沉重.`,
 			style: {
-				left: '100px',
-				top: '100px',
-				color: '#aaa',
-				width: '100px',
-				height: '30px',
+				left: '10px',
+				top: '10px',
+				color: '#000',
+				width: '200px',
+				height: '300px',
 				fontSize: '16px',
 				textAlign: 'left',
-				lineHeight: '20px'
+				lineHeight: '20px',
+				letterSpacing: '4px',
 			},
 			effect: {
 				in: {
@@ -27,7 +31,12 @@ var json = {
 				}
 				// out: null
 			},
-			lettering: false // 是否碎字
+			// 是否碎字
+			lettering: {
+				effect: 'bounceIn',
+				delay: 130,
+				initDelay: 100
+			}
 		}],
 		pageEffect: ''
 	}],

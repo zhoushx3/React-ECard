@@ -1,12 +1,6 @@
+import ElementAction from '../../action/ElementAction.js'
+
 const Position = React.createClass({
-
-	shouldComponentUpdate(nextProps) {
-		return nextProps.left !== this.props.left || nextProps.top !== this.props.top
-	},
-
-	setStyle(property, event) {
-		this.props.setStyle(property, (event.target.value || 0)+'px')
-	},
 
 	render() {
 		let left = parseInt(this.props.left)
@@ -16,11 +10,11 @@ const Position = React.createClass({
 			<div id="position" className="panel-sub">
 				<div className="flex-box">
 					<label>横坐标</label>
-					<input type="number" value={left} onChange={this.setStyle.bind(null, 'left')} />
+					<input type="number" value={left} onChange={ ElementAction.setStyle.bind(ElementAction, 'left')} />
 				</div>
 				<div className="flex-box">
 					<label>纵坐标</label>
-					<input type="number" value={top}  onChange={this.setStyle.bind(null, 'top')} />
+					<input type="number" value={top}  onChange={ ElementAction.setStyle.bind(ElementAction, 'top')} />
 				</div>
 			</div>
 		)	

@@ -8,8 +8,8 @@ const Percentage = React.createClass({
 	setStyle(min, max, event) {
 		let value = Number( event.target.value || 0 )
 		value = isNaN(value) ? 0 : value
-		value = value < 0 ? 0 : value
-		value = value > max ? max : value
+		value = value < (this.refs.number.value = 0, 0) ? 0 : value
+		value = value > (this.refs.number.value = max, max) ? max : value
 		ElementAction.setStyle(this.props.type, value)
 	},
 
@@ -37,7 +37,7 @@ const Percentage = React.createClass({
 			<div id="Percentage" className="panel-sub">
 				<label>{ name }</label>
 				<input type="range" min={ min } max={ max } value={ value } step={ step } onChange={ this.setStyle.bind(null, min, max) }/>
-				<input type="number" value={ value } onChange={ this.setStyle.bind(null, min, max) } />
+				<input type="number" value={ value } onChange={ this.setStyle.bind(null, min, max) } ref="number" />
 			</div>
 		)	
 	}

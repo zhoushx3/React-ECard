@@ -1,3 +1,110 @@
+#controller
+	position absolute
+	width 300px
+	padding	0 10px 10px 10px
+	right 0
+	top 60px
+	bottom 0
+	font-size 14px
+	line-height 20px
+	overflow-x hidden
+	overflow-y auto
+
+#group
+	position absolute
+	right 300px
+	top 100px
+	width 30px
+	height 100px
+	display flex
+	flex-direction column
+	justify-content space-around
+	z-index 999
+
+	.group-text,
+	.group-template
+		position relative
+		width 30px
+		height 30px
+		line-height 30px
+		border-radius 50%
+		box-shadow 0 0 5px #aaa
+		text-align center
+		cursor pointer
+
+		&:hover:before
+			position absolute
+			left -50px
+			font-size 12px
+			font-family "Microsoft Yahei"
+		img
+			width 100%
+			border-radius 50%
+	.group-text:hover:before
+		content '文本'
+	.group-template:hover:before
+		content '模板'
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// .container
+	// 	display flex
+	// 	justify-content center
+	// 	align-items center
+	// 	align-content space-between
+	// 	flex-wrap wrap
+	// 	width 100%
+	// 	padding 10px
+	// 	box-sizing border-box
+	// .flex-box
+	// 	width 50%
+	// 	display flex
+	// 	justify-content flex-start
+	// 	padding 15px 0
+	// 	border-bottom 1px solid #d6d6d6
+
+	// 	label
+	// 		width 53.1px
+	// 		font-size 13px
+	// 		text-align left
+	// 		line-height 27px
+	// 	input
+	// 		width 70px
+ //    	height 25px
+	// 		border-radius 2px
+	// .flex-box.color
+	// 	width 100%
+// 	justify-content flex-start
+
+// 模板列表板块
+#templateStore
+	width 100%
+	height 100%
+	overflow hidden
+	display flex
+	flex-direction row
+	flex-wrap wrap
+	justify-content space-around
+	align-content flex-start
+
+	div
+		width 40%
+		margin 20px 0
+		cursor pointer
+		img
+			width 100%
+	
+
 #editorPanel
 	position absolute
 	width 300px
@@ -31,18 +138,14 @@
 				background-color #16e4d8
 				color #fff
 	#tab-items
-		display flex
-		.tab-item
-			width 100%
-			display none
-			&.active
-				display block
-			
-		.no-select
-			font-size 30px
-			width 100px
-			height 200px
-			line-height 200px
+		width 100%
+		display block
+
+.no-select
+font-size 30px
+width 100px
+height 200px
+line-height 200px
 
 	#text-panel
 		width 100%
@@ -153,8 +256,6 @@
 			background-color #A0ECDF
 			color #fff
 		
-
-
 
 
 

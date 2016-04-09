@@ -10,6 +10,8 @@
 		border 1px dashed #000
 		.flexCircle
 			display block
+		.se-flex
+			display block
 
 	.flexCircle
 		width 10px
@@ -20,24 +22,36 @@
 		z-index 2
 		display none
 
-	.leftToFlex, .rightToFlex
+	.w-flex, .w-flex
 		cursor e-resize
 		top 50%
 		margin-top -5px
 
-	.leftToFlex
+	.w-flex
 		left -5px
 
-	.rightToFlex
+	.w-flex
 		right -5px
 
-	.topToFlex, .bottomToFlex
+	.n-flex, .s-flex
 		cursor n-resize
 		left 50%
 		margin-left -5px
 
-	.topToFlex
+	.n-flex
 		top -5px
 
-	.bottomToFlex
+	.s-flex
 		bottom -5px
+
+	.se-flex
+		position absolute
+		right -3px
+		bottom -3px
+		width 12px
+		height 12px
+		border 3px solid #222
+		border-left-color transparent
+		border-top-color transparent
+		cursor se-resize
+		display none

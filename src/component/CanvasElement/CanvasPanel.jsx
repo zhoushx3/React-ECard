@@ -1,5 +1,6 @@
 import Text from './Text.jsx'
-
+import Flip3D from './Flip3D.jsx'
+import Constant from '../../constant/Constant.js'
 import '../../static/stylus/CanvasPanel.stylus'
 
 const CanvasPanel = React.createClass({
@@ -7,16 +8,14 @@ const CanvasPanel = React.createClass({
 		page: React.PropTypes.object.isRequired
 	},
 
-	getIntialState() {
-
-	},
-
-	componentWillMount() {
-
-	},
-
-	componentDidMount() {
-
+	style() {
+		let width = Constant.SCREEN_WIDTH - Constant.PAGE_PANEL_WIDTH - Constant.EDITOR_PANEL_WIDTH - 100
+		let height = width * Constant.SCREEN_HEIGHT / Constant.SCREEN_WIDTH
+		return {
+			'width': width + 'px',
+			'height': height + 'px',
+			'maxWidth': Constant.SCREEN_WIDTH + 'px',
+		}
 	},
 
 	render() {
@@ -27,6 +26,9 @@ const CanvasPanel = React.createClass({
 				case 'text':
 					return <Text key={i} element={ element } elementId={i} selectElementId={selectElementId} />
 					break
+				case 'flip3D':
+					return <Flip3D key={i} element={ element } elementId={i} selectElementId={selectElementId} /> 
+					break
 				default :
 					return null
 			}
@@ -34,7 +36,7 @@ const CanvasPanel = React.createClass({
 
 		return (
 			<div id="canvasPanel">
-				<div id="canvas">
+				<div id="canvas" style={ this.style() }>
 					{ elements }
 				</div>
 			</div>

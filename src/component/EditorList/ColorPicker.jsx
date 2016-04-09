@@ -12,6 +12,7 @@ const ColorPicker = React.createClass({
 	},
 
 	spectrumInit() {
+		this.spectrumObj && this.spectrumObj.spectrum("destroy")
 		this.spectrumObj = $(this.refs.color).spectrum({
 		color: this.props.value,
 		showInput: true,
@@ -35,10 +36,7 @@ const ColorPicker = React.createClass({
 
 	render() {
 		return (
-			<div className="color-picker">
-				<label>颜色</label>
-				<input type="text" ref="color" />
-			</div>
+			<input type="text" ref="color" />
 		)
 	}
 })

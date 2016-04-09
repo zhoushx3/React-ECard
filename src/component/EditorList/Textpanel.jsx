@@ -18,6 +18,7 @@ const TextPanel = React.createClass({
 		return (
 			<div id="text-panel" className={ this.props.className }>
 				<Font element={ element } setContent={ this.setContent } />
+				<ColorPicker />
 				<TextAlign textAlign={ element.style.textAlign } />
 				<Size width={ element.style.width } height={ element.style.height } />
 				<Position left={ element.style.left } top={ element.style.top } />

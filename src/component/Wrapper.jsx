@@ -33,6 +33,27 @@ const ElementWrapper = React.createClass({
 		EditorAction.resetElementId(this.props.elementId)
 	},
 
+	flexBtns() {
+		let self = this
+		let type = self.props.element.type
+		let btns = []
+		switch (type) {
+			case 'text':
+				btns = ['w', 'e', 's', 'n']
+				break
+			case 'flip3D':
+				btns = ['se']
+				break
+		}
+		return btns.map( function( direction, index) {
+			if ( direction == 'se')
+				return <div key={index} className="se-flex" onMouseDown={self.flex.bind(null, 'se')}></div>
+			else
+				return <div key={index} className={`${direction}-flex flexCircle`} onMouseDown={self.flex.bind(null, direction)}></div>
+		})
+
+	},
+
 	render() {
 		let element = this.props.element
 		let elementId = this.props.elementId
@@ -47,10 +68,7 @@ const ElementWrapper = React.createClass({
 				<div className={ effectIn } style={ {width: '100%', height: '100%', overflow: 'hidden'} }>
 					{ this.props.children }
 				</div>
-				<div className="leftToFlex flexCircle" onMouseDown={this.flex.bind(null, 'left')}></div>
-				<div className="rightToFlex flexCircle" onMouseDown={this.flex.bind(null, 'right')}></div>
-				<div className="topToFlex flexCircle" onMouseDown={this.flex.bind(null, 'top')}></div>
-				<div className="bottomToFlex flexCircle" onMouseDown={this.flex.bind(null, 'bottom')}></div>
+				{ this.flexBtns() }
 			</div>
 		)
 	}

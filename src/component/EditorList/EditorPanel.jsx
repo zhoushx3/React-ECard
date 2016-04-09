@@ -1,8 +1,7 @@
 import TextPanel from './TextPanel.jsx'
 import OtherPanel from './OtherPanel.jsx'
 import EffectPanel from './EffectPanel.jsx'
-
-import '../../static/stylus/editorPanel.stylus'
+import Flip3DPanel from './Flip3DPanel.jsx'
 
 const EditorPanel = React.createClass({
 
@@ -32,21 +31,32 @@ const EditorPanel = React.createClass({
 		let tool = null
 		let other = null
 		let effect = null
+		let tabs = []
+		let tabItem = {}
 
-		let tabs = ['基本', '过场', '特效'].map( (item, i)=>{
-			let className = i == this.state.tab ? 'active' : ''
-
-			return <div className={ className } onClick={ this.changeTab.bind(null, i) } key={ i }>{ item }</div>
-		})
-
-		if (element) {
+		if ( selectElementId !== undefined ) {
 			switch (element.type) {
 				case 'text':
-					tool = <TextPanel className={ this.state.tab == 0 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
-					effect = <EffectPanel className={ this.state.tab == 1 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
-					other = <OtherPanel className={ this.state.tab == 2 ? 'tab-item active' : 'tab-item' } element={ element } selectElementId={ selectElementId } />
-				break
+					tabItem = {
+						"0": <TextPanel element={ element } selectElementId={ selectElementId } />,
+						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
+						"2": <OtherPanel element={ element } selectElementId={ selectElementId } />,
+					}
+					tabs = ['基本', '入场', '特效']
+					break
+				case 'flip3D':
+					tabItem = {
+						"0": <Flip3DPanel element={ element } selectElementId={ selectElementId } />,
+						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
+					}
+					tabs = ['基本', '入场']
+					break
 			}
+
+			tabs = tabs.map( (item, i)=>{
+				let className = i == this.state.tab ? 'active' : ''
+				return <div className={ className } onClick={ this.changeTab.bind(null, i) } key={ i }>{ item }</div>
+			})
 		}
 
 		return (
@@ -54,10 +64,8 @@ const EditorPanel = React.createClass({
 				<div id="tab">
 					{ tabs }
 				</div>
-				<div id="tab-items">
-					{ tool }
-					{ effect }
-					{ other }
+				<div id="tab-item">
+					{ tabItem[this.state.tab] }
 				</div>
 			</div>
 		)

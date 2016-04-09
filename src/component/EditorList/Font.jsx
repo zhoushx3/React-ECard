@@ -36,7 +36,7 @@ const Font = React.createClass({
 					</div>
 					<div className="flex-box">
 						<label>颜色</label>
-						<ColorPicker type="color" value={ color} />
+						<ColorPicker type="color" value={ color } />
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,7 @@ const Text = React.createClass({
 // 做文字特效用
 const LetteringP = React.createClass({
 	propTypes: {
-		lettering: React.PropTypes.object.isRequired
+		// lettering: React.PropTypes.object.isRequired
 	},
 
 	componentDidMount() {

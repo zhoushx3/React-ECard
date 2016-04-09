@@ -27,7 +27,7 @@ class DragEvent {
 		})
 
 		listener(self.container, 'mousemove', (event)=>{
-			if ( self.elementId ) {
+			if ( self.elementId !== undefined ) {
 				let clientX = event.clientX,
 						clientY = event.clientY,
 						delX = clientX - self.clientX,

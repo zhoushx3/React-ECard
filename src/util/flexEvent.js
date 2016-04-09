@@ -27,7 +27,7 @@ class FlexEvent {
 		})
 
 		listener(this.container, 'mousemove', (event)=>{
-			if ( self.elementId  ) {
+			if ( self.elementId !== undefined ) {
 
 				let clientX = event.clientX,
 						clientY = event.clientY,
@@ -36,15 +36,20 @@ class FlexEvent {
 						direction = self.direction
 
 				switch (direction) {
-					case 'left':
-					case 'right':
+					case 'w':
+					case 'e':
 						self.clientX = clientX
-						self.callback(delX)
+						self.callback(delX, 0)
 					break
-					case 'top':
-					case 'bottom':
+					case 'n':
+					case 's':
 						self.clientY = clientY
-						self.callback(delY)
+						self.callback(0, delY)
+					break
+					case 'se':
+						self.clientX = clientX
+						self.clientY = clientY
+						self.callback(delX, delY)
 					break
 				}
 			}

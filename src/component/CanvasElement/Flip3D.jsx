@@ -8,10 +8,11 @@ const Flip3D = React.createClass({
 
 	render() {
 		let element = this.props.element
+		let elementId = this.props.elementId
 		let selectElementId = this.props.selectElementId
 
 		return (
-			<Wrapper element={ element } selectElementId={ selectElementId }>
+			<Wrapper element={ element } elementId={ elementId } selectElementId={ selectElementId }>
 				<div className="flip-3d">
 				  <figure>
 				    <img src={ element.src } alt="" />

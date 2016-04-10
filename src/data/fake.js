@@ -1,7 +1,39 @@
 // 初始的全局模拟数据
 var json = {
 	page: [{
-		content: [
+		content: {
+			"1": {
+				type: 'flip3D',
+				style: {
+					left: '100px',
+					top: '100px',
+					width: '200px',
+					height: '300px',
+				},
+				src: 'src/static/images/1.jpg',
+				text: 'mouse',
+				effect: {
+					in: null
+				}
+			}
+		},
+		pageEffect: ''
+	}],
+	version: 1
+}
+
+export default json;
+
+/*
+新建项目需要初始化一定的数据结构，可以省去最开始
+的一些字段判断
+保证项目至少有一页
+*/
+/*
+模板分两种：
+1. 一个模板即一个元素，会有单独的编辑板块，而不管这个而模板内有什么元素
+2. 一个模板由多个元素组成，每个元素有单独的编辑板块, 并且含有这个模板的Id作为联系依据。
+*/
 		// {
 		// 	type: 'pic',
 		// 	style: {},
@@ -40,30 +72,3 @@ var json = {
 		// 		initDelay: 100
 		// 	}
 		// },
-		{
-			type: 'flip3D',
-			sId: 1,
-			style: {
-				left: '100px',
-				top: '100px',
-				width: '200px',
-				height: '300px',
-			},
-			src: 'src/static/images/1.jpg',
-			text: 'mouse',
-			effect: {
-				in: null
-			},
-		}],
-		pageEffect: ''
-	}],
-	version: 1
-}
-
-export default json;
-
-/*
-新建项目需要初始化一定的数据结构，可以省去最开始
-的一些字段判断
-保证项目至少有一页
-*/

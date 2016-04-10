@@ -39,18 +39,18 @@ class ElementAction {
 
 		switch (direction) {
 			case 'w':
-				style['left']  = upper( left + del, left + width - minW ) + 'px'
-				style['width'] = lower( width - del, minW ) + 'px'
+				style['left']  = upper( left + delX, left + width - minW ) + 'px'
+				style['width'] = lower( width - delX, minW ) + 'px'
 			break
 			case 'e':
-				style['width'] = lower( width + del, minW ) + 'px'
+				style['width'] = lower( width + delX, minW ) + 'px'
 			break
 			case 'n':
-				style['top'] = upper( top + del, top + height - minH ) + 'px'
-				style['height']  = lower ( height - del, minH ) + 'px'
+				style['top'] = upper( top + delY, top + height - minH ) + 'px'
+				style['height']  = lower ( height - delY, minH ) + 'px'
 			break
 			case 's':
-				style['height'] = lower( height + del, minH ) + 'px'
+				style['height'] = lower( height + delY, minH ) + 'px'
 			break
 			case 'se':
 				if (ele.type === 'flip3D') {

@@ -54,10 +54,10 @@ class EditorStore {
 	// 添加元素
 	addElement(newElement) {
 		let currentContent = this.json.page[this.pageIndex].content
-		let currentId = currentContent.length // 长度刚好是下一个元素在数组里的下标
+		let keys = Object.keys(currentContent)
+		let currentId = parseInt(keys[keys.length-1]) + 1 // 长度刚好是下一个元素在数组里的下标
 		newElement['style']['zIndex'] = currentId
-
-		currentContent.push(newElement)
+		currentContent[currentId] = newElement
 		this.selectElementId = currentId
 		this.selectElement = currentContent[currentId]
 		this.getJson()

@@ -21,18 +21,20 @@ const CanvasPanel = React.createClass({
 	render() {
 		let contents =this.props.page.content
 		let selectElementId = this.props.selectElementId
-		let elements = contents.map( (element, i)=>{
+		let elements = []
+		for (let i in contents) {
+			let element = contents[i]
 			switch(element.type) {
 				case 'text':
-					return <Text key={i} element={ element } selectElementId={selectElementId} />
+					elements.push(<Text key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
 					break
 				case 'flip3D':
-					return <Flip3D key={i} element={ element } selectElementId={selectElementId} /> 
+					elements.push(<Flip3D key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
 					break
 				default :
-					return null
+					break
 			}
-		})
+		}
 
 		return (
 			<div id="canvasPanel">

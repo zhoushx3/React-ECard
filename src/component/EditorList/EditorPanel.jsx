@@ -46,7 +46,7 @@ const EditorPanel = React.createClass({
 					break
 				case 'flip3D':
 					tabItem = {
-						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
+						"0": <Flip3DPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 					}
 					tabs = ['基本', '入场']

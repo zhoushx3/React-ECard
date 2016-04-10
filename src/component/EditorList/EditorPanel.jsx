@@ -36,6 +36,12 @@ const EditorPanel = React.createClass({
 
 		if ( selectElementId !== undefined ) {
 			switch (element.type) {
+				case 'background':
+					tabItem = {
+						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
+					}
+					tabs = ['基本']
+					break
 				case 'text':
 					tabItem = {
 						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,

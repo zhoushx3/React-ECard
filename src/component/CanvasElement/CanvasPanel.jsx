@@ -1,5 +1,6 @@
 import Text from './Text.jsx'
 import Flip3D from './Flip3D.jsx'
+import Background from './Background.jsx'
 import Constant from '../../constant/Constant.js'
 import '../../static/stylus/CanvasPanel.stylus'
 
@@ -25,6 +26,9 @@ const CanvasPanel = React.createClass({
 		for (let i in contents) {
 			let element = contents[i]
 			switch(element.type) {
+				case 'background':
+					elements.push(<Background key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
+					break
 				case 'text':
 					elements.push(<Text key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
 					break

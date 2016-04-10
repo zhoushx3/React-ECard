@@ -16,6 +16,8 @@ const Wrapper = React.createClass({
 	// TODO: 需要提前判断click事件是否触发，因为要resetElementID, flex函数同
 	drag(event) {
 		// 此处是为了禁掉浏览器默认事件，并且禁止节点传播，下同
+		if ( this.props.element.type === 'background')
+			return 
 		event.preventDefault()
 		event.stopPropagation()
 		ElementAction.drag(this.props.elementId, event.clientX, event.clientY)
@@ -59,10 +61,10 @@ const Wrapper = React.createClass({
 		let selectElementId = this.props.selectElementId
 		let style = element.style
 		let className = selectElementId == elementId ? 'wrapper active' : 'wrapper'
-		let effect = element.effect
+		let effect = element.effect || {}
 		let effectIn = effect['in'] ? ( effect['in']['effect'] ? effect['in']['effect']+' animated' : '' ) : ''
 		// effectIn 不直接赋在最外层div是因为如果style中存在transform属性，会被覆盖
-
+console.log(elementId, selectElementId)
 		return (
 			<div className={ className } style={ style } onClick={ this.setElementId } onMouseDown={ this.drag } ref="wrapper">
 				<div className={ effectIn } style={ {width: '100%', height: '100%', overflow: 'hidden'} }>

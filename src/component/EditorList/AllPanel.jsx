@@ -3,6 +3,7 @@ import Size from './Size.jsx'
 import Position from './Position.jsx'
 import TextAlign from './TextAlign.jsx'
 import Percentage from './Percentage.jsx'
+import ColorPicker from './ColorPicker.jsx'
 
 const AllPanel = React.createClass({
 	propTypes: {
@@ -15,10 +16,7 @@ const AllPanel = React.createClass({
 
 		return (
 			<div>
-				<Font element={ element } elementId={ elementId }/>
-				<TextAlign element={ element } elementId={ elementId }/>
-				<Size element={ element } elementId={ elementId }/>
-				<Position element={ element } elementId={ elementId }/>
+				<ColorPicker element={ element } elementId={ elementId } />
 			</div>
 		)
 	}
@@ -29,4 +27,8 @@ export default AllPanel
 
 
 {/*				<Percentage type="opacity" value={ element.style.opacity } />
+				<Font element={ element } elementId={ elementId }/>
+				<TextAlign element={ element } elementId={ elementId }/>
+				<Size element={ element } elementId={ elementId }/>
+				<Position element={ element } elementId={ elementId }/>
 				<Percentage type="rotate" value={ element.style.transform } />*/}

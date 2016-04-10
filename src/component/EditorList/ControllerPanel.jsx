@@ -40,7 +40,7 @@ const ControllerPanel = React.createClass({
 		let self = this
 		let element = self.props.element
 		let selectElementId = self.props.selectElementId
-		if ( selectElementId == undefined )
+		if ( selectElementId === undefined )
 			return <TemplatePanel />
 		else
 			return <EditorPanel element={ element } selectElementId={ selectElementId } />

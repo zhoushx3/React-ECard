@@ -92,7 +92,7 @@ class ElementAction {
 	// event == event(事件本身) || value(传入前已被修改的value)
 	setStyle(property, event) {
 		let ele = Store.selectElement
-
+console.log(property, event)
 		switch ( property ) {
 			case 'letterSpacing':
 			case 'lineHeight':
@@ -113,7 +113,8 @@ class ElementAction {
 				ele.style['transform'] = `rotate(${event}deg)`
 				break
 			case 'textAlign':
-				ele.style['textAlign'] = event
+			case 'backgroundColor':
+				ele.style[property] = event
 				break
 
 		}

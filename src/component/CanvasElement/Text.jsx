@@ -15,7 +15,6 @@ const Text = React.createClass({
 		let element = this.props.element
 		let elementId = this.props.elementId
 		let selectElementId = this.props.selectElementId
-console.log(this.props.elementId)
 		return (
 			<Wrapper element={ element } elementId={ elementId } selectElementId={ selectElementId }>
 				<LetteringP lettering={ element.lettering } content={ element.content } effect={ element.effect } />

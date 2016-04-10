@@ -120,6 +120,21 @@ class ElementAction {
 
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 
 	}
+	// 用于设置模板的一些属性
+	setTemplateStyle(property, event) {
+		let ele = Store.selectElement
+
+		switch ( property ) {
+			case 'text':
+				ele.text = event.target.value ? event.target.value.substr(0, 100) : ''
+				break
+			case 'src':
+				ele.src= event
+				break
+		}
+
+		Store.setElement(ele) // 重点是为了让 store 通知更新 View 
+	}
 }
 
 export default new ElementAction()

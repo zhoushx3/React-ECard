@@ -5,7 +5,7 @@ import ColorPicker from './ColorPicker.jsx'
 const Font = React.createClass({
 	
 	render() {
-		let element = Store.selectElement
+		let element = this.props.element
 		let validTypes = ['text', 'flip3D']
 
 		if ( validTypes.indexOf(element.type) === -1 )

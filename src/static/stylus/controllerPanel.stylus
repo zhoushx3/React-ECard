@@ -26,16 +26,29 @@
   	height 25px
 		border-radius 2px
 
-.flex-box.text-content
+// 文本内容
+.flex-box.text
 	width 100%
 	label
-		width 13%
+		width 20%
 	textarea
-		width 80%
+		width 76%
 		height 100px
 		resize none
 		border-radius 2px
 		border 1px solid #ececec
+		
+// 图片
+.flex-box.src
+	width 100%
+	label
+		width 20%
+		cursor pointer
+	input
+		width 76%
+	img
+		width 100px
+		height 100px
 		
 .flex-box.charDist
 	width 100%

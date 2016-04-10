@@ -11,14 +11,14 @@ const AllPanel = React.createClass({
 	
 	render() {
 		let element = this.props.element
-		let selectElementId = this.props.selectElementId
+		let elementId = this.props.elementId
 
 		return (
 			<div>
-				<Font element={ element } selectElementId={ selectElementId }/>
-				<TextAlign element={ element } selectElementId={ selectElementId }/>
-				<Size element={ element } selectElementId={ selectElementId }/>
-				<Position element={ element } selectElementId={ selectElementId }/>
+				<Font element={ element } elementId={ elementId }/>
+				<TextAlign element={ element } elementId={ elementId }/>
+				<Size element={ element } elementId={ elementId }/>
+				<Position element={ element } elementId={ elementId }/>
 			</div>
 		)
 	}

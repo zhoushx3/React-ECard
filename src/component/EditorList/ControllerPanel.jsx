@@ -13,6 +13,16 @@ const ControllerPanel = React.createClass({
 		}
 	},
 
+	componentDidMount() {
+    $('#controller').niceScroll({
+      cursorcolor: '#d6d6d6',
+      railalign: 'right',
+      horizrailenabled: false,
+      cursoropacitymin:0,
+      autohidemode: false
+    })
+	},
+
 	render() {
 		return (
 			<div>

@@ -1,4 +1,4 @@
-import TextPanel from './TextPanel.jsx'
+import AllPanel from './AllPanel.jsx'
 import OtherPanel from './OtherPanel.jsx'
 import EffectPanel from './EffectPanel.jsx'
 import Flip3DPanel from './Flip3DPanel.jsx'
@@ -38,7 +38,7 @@ const EditorPanel = React.createClass({
 			switch (element.type) {
 				case 'text':
 					tabItem = {
-						"0": <TextPanel element={ element } selectElementId={ selectElementId } />,
+						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 						"2": <OtherPanel element={ element } selectElementId={ selectElementId } />,
 					}
@@ -46,7 +46,7 @@ const EditorPanel = React.createClass({
 					break
 				case 'flip3D':
 					tabItem = {
-						"0": <Flip3DPanel element={ element } selectElementId={ selectElementId } />,
+						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 					}
 					tabs = ['基本', '入场']

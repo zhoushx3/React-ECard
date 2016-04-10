@@ -13,11 +13,11 @@ const Text = React.createClass({
 
 	render() {
 		let element = this.props.element
-		let elementId = this.props.elementId
+		let elementId = element.sId
 		let selectElementId = this.props.selectElementId
 
 		return (
-			<Wrapper element={ element } elementId={ elementId } selectElementId={ selectElementId }>
+			<Wrapper element={ element } selectElementId={ selectElementId }>
 				<LetteringP lettering={ element.lettering } content={ element.content } effect={ element.effect } />
 			</Wrapper>
 		)

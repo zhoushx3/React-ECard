@@ -1,14 +1,62 @@
 #controller
 	position absolute
 	width 300px
-	padding	0 10px 10px 10px
 	right 0
 	top 60px
 	bottom 0
 	font-size 14px
 	line-height 20px
-	overflow-x hidden
-	overflow-y auto
+	overflow hidden
+	background-color #ECECEC
+	
+.flex-box
+	width 50%
+	display flex
+	justify-content flex-start
+	padding 15px 0
+	border-bottom 1px solid #d6d6d6
+
+	label
+		width 53.1px
+		font-size 13px
+		text-align left
+		line-height 27px
+	input
+		width 70px
+  	height 25px
+		border-radius 2px
+
+.flex-box.text-content
+	width 100%
+	label
+		width 13%
+	textarea
+		width 80%
+		height 100px
+		resize none
+		border-radius 2px
+		border 1px solid #ececec
+		
+.flex-box.charDist
+	width 100%
+
+.flex-box.text-align,
+.flex-box.font-weight
+	width 100%
+
+	div
+		width 70px
+		line-height 27px
+		border-radius 2px
+		text-align center
+		font-size 12px
+		cursor pointer
+		background-color #fff
+		color #16E4D8
+		
+		&.active
+			background-color #16E4D8
+			color #fff
 
 #group
 	position absolute
@@ -108,19 +156,14 @@
 #editorPanel
 	position absolute
 	width 300px
-	padding	0 10px 10px 10px
 	right 0
-	top 60px
-	bottom 0
 	font-size 14px
 	line-height 20px
-	overflow-x hidden
-	overflow-y auto
 
 	#tab
 		display flex
 		div
-			width 33.3333%
+			flex 1
 			height 30px
 			text-align center
 			line-height 30px
@@ -273,11 +316,11 @@ input[type="text"]
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button{
-  -webkit-appearance: none !important;
-  margin: 0; 
+  -webkit-appearance none !important
+  margin 0
 }
 
 input[type="number"] {
-  -moz-appearance:textfield;
+  -moz-appearance textfield
 }
 

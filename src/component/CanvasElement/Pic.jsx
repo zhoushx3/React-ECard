@@ -1,7 +1,6 @@
 import Wrapper from '../Wrapper.jsx'
-import '../../static/stylus/flip_3D.stylus'
 
-const Flip3D = React.createClass({
+const Pic = React.createClass({
 	propTypes: {
 		element: React.PropTypes.object.isRequired
 	},
@@ -12,15 +11,10 @@ const Flip3D = React.createClass({
 
 		return (
 			<Wrapper element={ element } selectElementId={ selectElementId }>
-				<div className="flip-3d">
-				  <figure>
-				    <img src={ element.src } alt="" />
-				    <figcaption>{ element.text }</figcaption>
-					</figure>
-				</div>
+				<img src={ element.src } />
 			</Wrapper>
 		)
 	}
 })
 
-export default Flip3D
+export default Pic

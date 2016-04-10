@@ -2,7 +2,7 @@
 
 import Constant from '../constant/editorConstant.js'
 import Store from '../store/EditorStore.js'
-import { upper, lower, deepCopy } from '../util/func.js'
+import { upper, lower, deepCopy, gouGu } from '../util/func.js'
 
 class ElementAction {
 	constructor() {}
@@ -11,7 +11,6 @@ class ElementAction {
  	drag(elementId, eventX, eventY) {
  		let self = this
  		Store.resetElementId(elementId)
-
 		window.dragEvent.drag(elementId, eventX, eventY, (delX, delY) => {
 			let ele = Store.selectElement
 			ele.style.left = parseInt(ele.style.left) + delX + 'px'
@@ -23,12 +22,12 @@ class ElementAction {
  	flex(elementId, eventX, eventY, direction) {
  		let self = this
 
-		window.flexEvent.flex(elementId, eventX, eventY, direction, (del) => {
-			self._processFlex(del, direction)
+		window.flexEvent.flex(elementId, eventX, eventY, direction, (delX, delY) => {
+			self._processFlex(delX, delY, direction)
 		})
 	}
 	// 处理拉伸
-	_processFlex(del, direction) {
+	_processFlex(delX, delY, direction) {
 		let minW = 10
 		let minH = 10
 		let ele = Store.selectElement
@@ -39,20 +38,26 @@ class ElementAction {
 		let height = parseInt(style['height'])
 
 		switch (direction) {
-			case 'left':
+			case 'w':
 				style['left']  = upper( left + del, left + width - minW ) + 'px'
 				style['width'] = lower( width - del, minW ) + 'px'
 			break
-			case 'right':
+			case 'e':
 				style['width'] = lower( width + del, minW ) + 'px'
 			break
-			case 'top':
+			case 'n':
 				style['top'] = upper( top + del, top + height - minH ) + 'px'
 				style['height']  = lower ( height - del, minH ) + 'px'
 			break
-			case 'bottom':
+			case 's':
 				style['height'] = lower( height + del, minH ) + 'px'
 			break
+			case 'se':
+				if (ele.type === 'flip3D') {
+					style['width'] = lower( width + delX, minW ) + 'px'
+					style['height'] = lower( height + delY, minH ) + 'px'
+				}
+				break
 		}
 
 		Store.setElement(ele)

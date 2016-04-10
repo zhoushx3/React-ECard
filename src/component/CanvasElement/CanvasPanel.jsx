@@ -24,10 +24,10 @@ const CanvasPanel = React.createClass({
 		let elements = contents.map( (element, i)=>{
 			switch(element.type) {
 				case 'text':
-					return <Text key={i} element={ element } elementId={i} selectElementId={selectElementId} />
+					return <Text key={i} element={ element } selectElementId={selectElementId} />
 					break
 				case 'flip3D':
-					return <Flip3D key={i} element={ element } elementId={i} selectElementId={selectElementId} /> 
+					return <Flip3D key={i} element={ element } selectElementId={selectElementId} /> 
 					break
 				default :
 					return null

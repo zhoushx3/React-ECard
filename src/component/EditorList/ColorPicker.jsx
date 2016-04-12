@@ -4,74 +4,52 @@ import ElementAction from '../../action/ElementAction.js'
 
 
 const ColorPicker = React.createClass({
-	valid: true, // 用于判断元素类型是否需要调色器
-	colorType: 'backgroundColor',
 
 	componentDidMount() {
-		this.valid && this.spectrumInit()
+		console.log(this)
+		this.spectrumInit()
 	},
 
 	componentWillUnmount() {
-		this.valid && this.spectrumObj.spectrum('destroy')
-	},
- 
-	componentWillReceiveProps(nextProps) {
-		if (this.props.element !== nextProps.element || this.props.elementId !== nextProps.elementId) {
-			this.checkType()
-			this.valid && this.spectrumInit()
-		}
-	},
-
-	checkType() {
-		let validTypes = ['background']
-		switch( this.props.element.type ) {
-			case 'background':
-				this.valid = true
-				this.colorType = 'backgroundColor'
-				break
-			default:
-				this.valid = false
-				break
-		}
+		// this.spectrumObj && this.spectrumObj.spectrum("destroy")
 	},
 
 	render() {
-		let element = this.props.element
-		this.checkType()
-		if ( !this.valid )
-			return null
-
-		return (
-			<input type="text" ref="color" />
-		)
+		return <input type="text" />
 	},
 
 	spectrumInit() {
+		let $dom = $(ReactDOM.findDOMNode(this))
 		this.spectrumObj && this.spectrumObj.spectrum("destroy")
-		this.spectrumObj = $(this.refs.color).spectrum({
-		color: this.props.element.style[this.colorType],
-		showInput: true,
-    showAlpha: true,
-    allowEmpty: true,
-    showPalette: false,
-    preferredFormat: 'hex',
-    showButtons: false,
-    clickoutFiresChange: true,
-	})
-    $(this.refs.color).on('dragstart.spectrum', this.changeColor)
-    $(this.refs.color).on('dragstop.spectrum', this.changeColor)
-    $(this.refs.color).on('change.spectrum', this.fireChange)
-    $(this.refs.color).on('move.spectrum', this.changeColor)
+		this.spectrumObj = $dom.spectrum({
+			color: this.props.value,
+			showInput: true,
+	    showAlpha: true,
+	    allowEmpty: true,
+	    showPalette: false,
+	    preferredFormat: 'hex',
+	    showButtons: false,
+	    clickoutFiresChange: true,
+		})
+   	$dom.on('dragstart.spectrum', this.changeColor)
+   	$dom.on('dragstop.spectrum', this.changeColor)
+   	// $dom.on('change.spectrum', this.fireChange)
+   	$dom.on('move.spectrum', this.changeColor)
 	},
 
 	changeColor(event, color) {
 		let newColor = color ? color.toString() : 'rgba(255,255,255,0)'
-		console.log(this.colorType)
-		ElementAction.setStyle(this.colorType, newColor)
+		let type = this.props.type
+		ElementAction.setStyle(type, newColor)
 	},
 
 	fireChange() {
 		return false
+	},
+
+	modifyBackgroundEffect(event) {
+		let checked = event.target.checked
+		ElementAction.setStyle('backgroundEffectEnable', checked)
 	}
 })
 

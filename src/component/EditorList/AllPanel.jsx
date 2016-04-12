@@ -3,7 +3,7 @@ import Size from './Size.jsx'
 import Position from './Position.jsx'
 import TextAlign from './TextAlign.jsx'
 import Percentage from './Percentage.jsx'
-import ColorPicker from './ColorPicker.jsx'
+import Color from './Color.jsx'
 
 const AllPanel = React.createClass({
 	propTypes: {
@@ -12,11 +12,11 @@ const AllPanel = React.createClass({
 	
 	render() {
 		let element = this.props.element
-		let elementId = this.props.elementId
+		let selectElementId = this.props.selectElementId
 
 		return (
 			<div>
-				<ColorPicker element={ element } elementId={ elementId } />
+				<Color element={ element } selectElementId={ selectElementId } />
 			</div>
 		)
 	}

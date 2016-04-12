@@ -92,7 +92,6 @@ class ElementAction {
 	// event == event(事件本身) || value(传入前已被修改的value)
 	setStyle(property, event) {
 		let ele = Store.selectElement
-console.log(property, event)
 		switch ( property ) {
 			case 'letterSpacing':
 			case 'lineHeight':
@@ -116,7 +115,15 @@ console.log(property, event)
 			case 'backgroundColor':
 				ele.style[property] = event
 				break
-
+			case 'backgroundEffectEnable':
+				ele['backgroundEffect']['enable'] = event
+				break
+			case 'light':
+				ele['backgroundEffect']['light'] = event
+				break
+			case 'back':
+				ele['backgroundEffect']['back'] = event
+				break
 		}
 
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 

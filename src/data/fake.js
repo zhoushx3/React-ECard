@@ -4,6 +4,11 @@ var json = {
 		content: {
       "0": {
         "type": "background",
+        "backgroundEffect": {
+        	enable: true,
+        	light: '#111122',
+        	back: '#FF0022'
+        }, // 背景特效
         "style": {
           "left": 0,
           "right": 0,
@@ -13,20 +18,20 @@ var json = {
           "zIndex": 0
         }
       },
-			"1": {
-				type: 'flip3D',
-				style: {
-					left: '100px',
-					top: '100px',
-					width: '200px',
-					height: '300px',
-				},
-				src: 'src/static/images/1.jpg',
-				text: 'mouse',
-				effect: {
-					in: null
-				}
-			}
+			// "1": {
+			// 	type: 'flip3D',
+			// 	style: {
+			// 		left: '100px',
+			// 		top: '100px',
+			// 		width: '200px',
+			// 		height: '300px',
+			// 	},
+			// 	src: 'src/static/images/1.jpg',
+			// 	text: 'mouse',
+			// 	effect: {
+			// 		in: null
+			// 	}
+			// }
 		},
 		pageEffect: ''
 	}],

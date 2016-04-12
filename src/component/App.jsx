@@ -51,7 +51,7 @@ const App = React.createClass({
 		let page = json.page[this.state.pageIndex]
 		let selectElementId = this.state.selectElementId
 		let element = this.state.selectElement
-		console.log(selectElementId)
+		// console.log(selectElementId)
 		return (
 			<div>
 				<Header />

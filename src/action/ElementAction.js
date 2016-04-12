@@ -113,6 +113,7 @@ class ElementAction {
 				break
 			case 'textAlign':
 			case 'backgroundColor':
+			case 'color':
 				ele.style[property] = event
 				break
 			case 'backgroundEffectEnable':

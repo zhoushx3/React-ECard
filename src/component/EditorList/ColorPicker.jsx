@@ -6,7 +6,6 @@ import ElementAction from '../../action/ElementAction.js'
 const ColorPicker = React.createClass({
 
 	componentDidMount() {
-		console.log(this)
 		this.spectrumInit()
 	},
 

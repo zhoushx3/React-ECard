@@ -3,7 +3,6 @@ import ElementAction from '../../action/ElementAction.js'
 
 const Color = React.createClass({
 	getInitialState() {
-		console.log(4)
 		return {
 			colorType: [],
 			selectElementId: undefined
@@ -12,13 +11,10 @@ const Color = React.createClass({
 
 	componentWillMount() {
 		this.changeColorType(this.props)
-		console.log(3)
-
 	},
 
 	componentWillReceiveProps(nextProps) {
 		this.changeColorType(nextProps)
-		console.log(2)
 	},
 
 	changeColorType(props) {
@@ -35,6 +31,9 @@ const Color = React.createClass({
 				else
 					newType = ['style.backgroundColor']
 				break
+			case 'text':
+				newType = ['style.color']
+				break
 			default:
 				break
 		}
@@ -49,18 +48,40 @@ const Color = React.createClass({
 				}
 			}
 		}
-		if (change) {
-			for (let i = 0; i < l; i += 1)
-				ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.refs['color_'+i]))
+		if (change && originalType.length) {
+			// 指定parentNode应该是因为unmount的点应该从父节点处砍断
+			ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.sub).parentNode)
 		}
-		console.log(newType)
 		this.setState({
 			colorType: newType,
 			selectElementId: props.selectElementId
 		})
 	},
+
+	addComponent() {
+		let selectElementId = this.props.selectElementId
+		let element = this.props.element
+
+		let pickers = this.state.colorType.map( function(t, i) {
+			let type = t.split('.')
+			return <ColorPicker selectElementId={ selectElementId } key={i} pKey={ type[0] } type={ type[1] } value={ element[type[0]][type[1]] } />
+		})
+		pickers = (
+			<div>
+			{ pickers }
+			</div>
+		)
+		this.sub = ReactDOM.render(pickers, this.refs.con)
+		// 这种挂载方式是为了每次需要更新Colorpicker的时候卸载能指定对象
+		// http://stackoverflow.com/questions/21662153/unmounting-react-js-node
+	},
+
 	componentDidMount() {
-		ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.refs['color_0']))
+		this.addComponent()
+	},
+
+	componentDidUpdate() {
+		this.addComponent()
 	},
 
 	render() {
@@ -68,11 +89,6 @@ const Color = React.createClass({
 		let element = this.props.element
 		let selectElementId = this.props.selectElementId
 		let addition = null
-
-		let pickers = this.state.colorType.map( function(t, i) {
-			let type = t.split('.')
-			return <ColorPicker ref={ "color_"+i } selectElementId={ selectElementId } key={i} pKey={ type[0] } type={ type[1] } value={ element[type[0]][type[1]] } />
-		})
 
 		if ( element.type === 'background') {
 			let enable = element.backgroundEffect.enable 
@@ -82,7 +98,7 @@ const Color = React.createClass({
 
 		return (
 			<div className="flex-box colorPicker">
-				{ pickers }
+				<div ref="con"></div>
 				{ addition }
 			</div>
 		)

@@ -4,6 +4,7 @@ import Position from './Position.jsx'
 import TextAlign from './TextAlign.jsx'
 import Percentage from './Percentage.jsx'
 import Color from './Color.jsx'
+import PicPanel from './PicPanel.jsx'
 
 const AllPanel = React.createClass({
 	propTypes: {
@@ -15,8 +16,10 @@ const AllPanel = React.createClass({
 		let selectElementId = this.props.selectElementId
 
 		return (
-			<div>
+			<div className="tab-item">
 				<Color element={ element } selectElementId={ selectElementId } />
+				<Position element={ element } selectElementId={ selectElementId } />
+				<PicPanel element={ element } selectElementId={ selectElementId } />
 			</div>
 		)
 	}

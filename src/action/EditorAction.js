@@ -16,6 +16,9 @@ class EditorAction {
 			case 'text':
 				Store.addElement(textTemplate())
 			break
+			case 'pic':
+				Store.addElement(picTemplate())
+			break
 			case 'flip_3D':
 				Store.addElement(flip_3DTemplate())
 			break
@@ -84,6 +87,24 @@ function textTemplate() {
 		},
 		// 是否碎字
 		lettering: null
+	}
+}
+
+function picTemplate() {
+	return {
+		type: 'pic',
+		src: 'src/static/images/default.jpg',
+		style: {
+			left: '200px',
+			top: '200px',
+			width: '200px',
+			height: '200px',
+		},
+		effect: {
+			in: {
+				effect: 'bounceIn'
+			}
+		},
 	}
 }
 

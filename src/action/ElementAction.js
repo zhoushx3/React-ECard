@@ -125,6 +125,9 @@ class ElementAction {
 			case 'back':
 				ele['backgroundEffect']['back'] = event
 				break
+			case 'src':
+				ele['src'] = event
+				break
 		}
 
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 

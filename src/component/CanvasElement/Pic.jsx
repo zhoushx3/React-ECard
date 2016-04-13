@@ -7,10 +7,11 @@ const Pic = React.createClass({
 
 	render() {
 		let element = this.props.element
+		let elementId = this.props.elementId
 		let selectElementId = this.props.selectElementId
 
 		return (
-			<Wrapper element={ element } selectElementId={ selectElementId }>
+			<Wrapper element={ element } elementId={ elementId } selectElementId={ selectElementId }>
 				<img src={ element.src } />
 			</Wrapper>
 		)

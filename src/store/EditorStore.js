@@ -53,6 +53,7 @@ class EditorStore {
 	}
 	// 添加元素
 	addElement(newElement) {
+		console.log(newElement)
 		let currentContent = this.json.page[this.pageIndex].content
 		let keys = Object.keys(currentContent)
 		let currentId = parseInt(keys[keys.length-1]) + 1 // 长度刚好是下一个元素在数组里的下标

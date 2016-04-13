@@ -48,7 +48,7 @@ const ControllerPanel = React.createClass({
 
 	panelBtns() {
 		let self = this
-		let panelTypes = ['text', 'template']
+		let panelTypes = ['text', 'pic', 'template']
 		return panelTypes.map( function(type, index) {
 			return (
 				<div key={ index } onClick={ self.showPanel.bind(self, type) } className={ `group-${type}` }>
@@ -62,6 +62,9 @@ const ControllerPanel = React.createClass({
 		switch (panel) {
 			case 'text':
 				EditorAction.addElement('text')
+				break
+			case 'pic':
+				EditorAction.addElement('pic')
 				break
 			default:
 				EditorAction.resetElementId(undefined)

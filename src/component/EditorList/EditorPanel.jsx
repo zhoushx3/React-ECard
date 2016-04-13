@@ -43,6 +43,7 @@ const EditorPanel = React.createClass({
 					tabs = ['基本']
 					break
 				case 'text':
+				case 'pic':
 					tabItem = {
 						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
@@ -70,9 +71,7 @@ const EditorPanel = React.createClass({
 				<div id="tab">
 					{ tabs }
 				</div>
-				<div id="tab-item">
-					{ tabItem[this.state.tab] }
-				</div>
+				{ tabItem[this.state.tab] }
 			</div>
 		)
 	}

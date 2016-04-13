@@ -1,3 +1,4 @@
+import Pic from './Pic.jsx'
 import Text from './Text.jsx'
 import Flip3D from './Flip3D.jsx'
 import Background from './Background.jsx'
@@ -31,6 +32,9 @@ const CanvasPanel = React.createClass({
 					break
 				case 'text':
 					elements.push(<Text key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
+					break
+				case 'pic':
+					elements.push(<Pic key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)
 					break
 				case 'flip3D':
 					elements.push(<Flip3D key={i} element={ element } elementId={ i } selectElementId={selectElementId} />)

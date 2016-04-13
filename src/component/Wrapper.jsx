@@ -43,6 +43,7 @@ const Wrapper = React.createClass({
 				btns = ['w', 'e', 's', 'n']
 				break
 			case 'flip3D':
+			case 'pic':
 				btns = ['se']
 				break
 		}

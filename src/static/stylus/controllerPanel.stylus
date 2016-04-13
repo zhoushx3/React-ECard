@@ -39,17 +39,6 @@
 		border-radius 2px
 		border 1px solid #ececec
 		
-// 图片
-.flex-box.src
-	width 100%
-	label
-		width 20%
-		cursor pointer
-	input
-		width 76%
-	img
-		width 100px
-		height 100px
 
 // 颜色
 .flex-box.colorPicker
@@ -91,10 +80,12 @@
 	z-index 999
 
 	.group-text,
+	.group-pic,
 	.group-template
 		position relative
 		width 30px
 		height 30px
+		margin 5px 0
 		line-height 30px
 		border-radius 50%
 		box-shadow 0 0 5px #aaa
@@ -181,39 +172,31 @@
 	font-size 14px
 	line-height 20px
 
-	#tab
-		display flex
-		div
-			flex 1
-			height 30px
-			text-align center
-			line-height 30px
-			background-color #fff
-			color #16e4d8
-			border 1px solid #16e4d8
-			border-left none
-			font-size 13px
-			cursor pointer
-			
-			&:first-child
-				border-left 1px solid #16e4d8
-			
-			&.active
-				background-color #16e4d8
-				color #fff
-	#tab-items
-		width 100%
-		display block
-
-.no-select
-font-size 30px
-width 100px
-height 200px
-line-height 200px
-
-	#text-panel
-		width 100%
+#tab
+	display flex
+	div
+		flex 1
+		height 30px
+		text-align center
+		line-height 30px
+		background-color #fff
+		color #16e4d8
+		border 1px solid #16e4d8
+		border-left none
+		font-size 13px
+		cursor pointer
 		
+		&:first-child
+			border-left 1px solid #16e4d8
+		
+		&.active
+			background-color #16e4d8
+			color #fff
+			
+.tab-item
+	width 100%
+	display block
+
 	.panel-sub
 		border-bottom 1px solid #ececec
 		padding 20px 0
@@ -234,13 +217,31 @@ line-height 200px
 			flex-direction row
 			justify-content space-around
 
-	
 // 位置板块
-#position, #text-font, #size
+.position.panel-sub
+	width 100%
 	.flex-box
 		width 50% !important
 		label 
 			width	35%
+		input
+			width 50%
+	
+// 图片板块
+.flex-box.pic-panel
+	width 100%
+	input
+		cursor pointer
+		width 50%
+	.pic
+		width 50%
+		display flex
+		justify-content center
+	img
+		width auto
+		max-width 100%
+		max-height 200px
+
 
 #other-panel
 	.flex-box

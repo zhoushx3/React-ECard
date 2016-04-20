@@ -22,6 +22,9 @@ class EditorAction {
 			case 'flip_3D':
 				Store.addElement(flip_3DTemplate())
 			break
+			case 'form':
+				Store.addElement(formTemplate())
+			break
 		}
 	}
 	/*
@@ -120,6 +123,31 @@ function flip_3DTemplate() {
 		src: 'src/static/images/1.jpg',
 		effect: {
 			in: null
+		},
+	}
+}
+
+function formTemplate() {
+	// style不可修改
+	// check1/check2是表单元素，check表示是否需要验证, value是验证的值, placeholder是提示
+	return {
+		type: 'form',
+		style: {
+			left: '100px',
+			top: '100px',
+			width: '250px',
+			height: '250px',
+		},
+		check1: false,
+		value1: 1,
+		placeholder1: '姓名',
+		check2: true,
+		value2: 2,
+		placeholder2: '年龄',
+		effect: {
+			in: {
+				effect: 'bounceIn'
+			}
 		},
 	}
 }

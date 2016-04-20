@@ -12,9 +12,18 @@ const PicPanel = React.createClass({
 		}
 	},
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.element.type !== 'pic')
+			return
+		this.setState({
+			src: nextProps.element.src
+		})
+	},
+
 	render() {
 		let element = this.props.element
 		let elementId = this.props.elementId
+
 
 		switch( element.type ) {
 			case 'pic':

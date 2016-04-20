@@ -36,7 +36,6 @@ const Background = React.createClass({
 		let self = this
     let backgroundEffect = this.props.element.backgroundEffect
     let container = self.refs.background
-    console.log(backgroundEffect.enable)
 		if ( !backgroundEffect.enable ) {
 			let el = document.createElement('div')
       container.replaceChild(el, container.firstChild)

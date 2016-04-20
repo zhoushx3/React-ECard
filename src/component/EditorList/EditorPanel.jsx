@@ -1,4 +1,5 @@
 import AllPanel from './AllPanel.jsx'
+import FormPanel from './FormPanel.jsx'
 import OtherPanel from './OtherPanel.jsx'
 import EffectPanel from './EffectPanel.jsx'
 import Flip3DPanel from './Flip3DPanel.jsx'
@@ -43,17 +44,29 @@ const EditorPanel = React.createClass({
 					tabs = ['基本']
 					break
 				case 'text':
-				case 'pic':
 					tabItem = {
 						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 						"2": <OtherPanel element={ element } selectElementId={ selectElementId } />,
+					}
+					break
+				case 'pic':
+					tabItem = {
+						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
+						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 					}
 					tabs = ['基本', '入场', '特效']
 					break
 				case 'flip3D':
 					tabItem = {
 						"0": <Flip3DPanel element={ element } selectElementId={ selectElementId } />,
+						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
+					}
+					tabs = ['基本', '入场']
+					break
+				case 'form':
+					tabItem = {
+						"0": <FormPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 					}
 					tabs = ['基本', '入场']

@@ -31,6 +31,7 @@ class ElementAction {
 		let minW = 10
 		let minH = 10
 		let ele = Store.selectElement
+		let type = ele.type
 		let style = ele['style']
 		let left = parseInt(style['left'])
 		let top = parseInt(style['top'])
@@ -53,7 +54,7 @@ class ElementAction {
 				style['height'] = lower( height + delY, minH ) + 'px'
 			break
 			case 'se':
-				if (ele.type === 'flip3D') {
+				if ( ['flip3D', 'pic'].indexOf(type) > -1 ) {
 					style['width'] = lower( width + delX, minW ) + 'px'
 					style['height'] = lower( height + delY, minH ) + 'px'
 				}
@@ -128,6 +129,14 @@ class ElementAction {
 			case 'src':
 				ele['src'] = event
 				break
+			case 'check1':
+			case 'check2':
+			case 'placeholder1':
+			case 'placeholder2':
+			case 'value1':
+			case 'value2':
+				ele[property] = event
+			break
 		}
 
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 

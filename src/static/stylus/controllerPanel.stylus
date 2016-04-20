@@ -9,6 +9,13 @@
 	overflow hidden
 	background-color #ECECEC
 	
+	input[type="number"], input[type="text"]
+		background-color #fff
+		border-radius 2px
+		border 1px solid #ececec
+		margin-left 3px
+		text-align center
+	
 .flex-box
 	width 50%
 	display flex
@@ -26,6 +33,9 @@
 		width 70px
   	height 25px
 		border-radius 2px
+
+
+
 
 // 文本内容
 .flex-box.text
@@ -107,44 +117,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-	// .container
-	// 	display flex
-	// 	justify-content center
-	// 	align-items center
-	// 	align-content space-between
-	// 	flex-wrap wrap
-	// 	width 100%
-	// 	padding 10px
-	// 	box-sizing border-box
-	// .flex-box
-	// 	width 50%
-	// 	display flex
-	// 	justify-content flex-start
-	// 	padding 15px 0
-	// 	border-bottom 1px solid #d6d6d6
-
-	// 	label
-	// 		width 53.1px
-	// 		font-size 13px
-	// 		text-align left
-	// 		line-height 27px
-	// 	input
-	// 		width 70px
- //    	height 25px
-	// 		border-radius 2px
-	// .flex-box.color
-	// 	width 100%
-// 	justify-content flex-start
 
 // 模板列表板块
 #templateStore
@@ -242,7 +214,14 @@
 		max-width 100%
 		max-height 200px
 
-
+// 表单板块
+.flex-box.form-panel
+	width 100%
+	color #000
+	input
+		height 40px
+		line-height 40px
+	
 #other-panel
 	.flex-box
 		width 100% !important
@@ -253,7 +232,7 @@
 			
 			
 // 范围调整
-#Percentage
+.percentage
 	width 100%
 	label
 		width 30%
@@ -322,18 +301,6 @@
 			color #fff
 		
 
-
-
-
-
-
-input[type="number"], 
-input[type="text"]
-	background-color #fff
-	border-radius 2px
-	border 1px solid #ececec
-	margin-left 3px
-	text-align center
 
 
 input[type="number"]::-webkit-outer-spin-button,

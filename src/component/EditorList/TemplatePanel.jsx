@@ -13,10 +13,9 @@ const TemplatePanel = React.createClass({
 		)
 	},
 
-
 	templateChoices() {
 		let self = this
-		let choices = ['flip_3D']
+		let choices = ['flip_3D', 'form']
 		return choices.map( function(type, index) {
 			return (
 				<div key={ index } onDoubleClick={ self.chooseTemplate.bind(self, type) }>

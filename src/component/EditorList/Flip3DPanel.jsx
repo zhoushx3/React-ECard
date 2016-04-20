@@ -1,7 +1,3 @@
-import Font from './Font.jsx'
-import Position from './Position.jsx'
-import TextAlign from './TextAlign.jsx'
-
 import ElementAction from '../../action/ElementAction.js'
 
 const Flip3DPanel = React.createClass({
@@ -11,11 +7,17 @@ const Flip3DPanel = React.createClass({
 
 	getInitialState() {
 		return {
-			src: '',
+			src: this.props.element.src,
 			srcChanged: false
 		}
 	},
 
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			src: nextProps.element.src
+		})
+	},
+	
 	render() {
 		let element = this.props.element
 		let elementId = this.props.elementId
@@ -26,12 +28,8 @@ const Flip3DPanel = React.createClass({
 					<label>文本</label>
 					<textarea placeholder="最多100字" maxLength={100} value={ text } onChange={ ElementAction.setTemplateStyle.bind(ElementAction, 'text')} />
 				</div>
-				<div className="flex-box src">
-					<label>更换图片</label>
+				<div className="flex-box pic-panel">
 					<input type="file" ref="file" onChange={ this.uploadImg }/>
-				</div>
-				<div className="flex-box src">
-					<label onClick={ this.changeImg }>点我确定</label>
 					<img src={ this.state.src } />
 				</div>
 			</div>
@@ -43,7 +41,7 @@ const Flip3DPanel = React.createClass({
 			// src: this.refs.file.files[0].getAsDataURL() 火狐7-
 			src: window.URL.createObjectURL(this.refs.file.files[0]), // 火狐7+
 			srcChanged: true
-		})
+		}, this.changeImg)
 	},
 
 	changeImg() {

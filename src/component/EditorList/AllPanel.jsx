@@ -20,6 +20,8 @@ const AllPanel = React.createClass({
 				<Color element={ element } selectElementId={ selectElementId } />
 				<Position element={ element } selectElementId={ selectElementId } />
 				<PicPanel element={ element } selectElementId={ selectElementId } />
+				<Percentage type="rotate" element={ element } selectElementId={ selectElementId } />
+				<Percentage type="opacity" element={ element } selectElementId={ selectElementId } />
 			</div>
 		)
 	}
@@ -33,5 +35,4 @@ export default AllPanel
 				<Font element={ element } elementId={ elementId }/>
 				<TextAlign element={ element } elementId={ elementId }/>
 				<Size element={ element } elementId={ elementId }/>
-				<Position element={ element } elementId={ elementId }/>
-				<Percentage type="rotate" value={ element.style.transform } />*/}
+				<Position element={ element } elementId={ elementId }/>*/}

@@ -54,7 +54,7 @@ class ElementAction {
 				style['height'] = lower( height + delY, minH ) + 'px'
 			break
 			case 'se':
-				if ( ['flip3D', 'pic'].indexOf(type) > -1 ) {
+				if ( ['flip3D', 'pic', 'video'].indexOf(type) > -1 ) {
 					style['width'] = lower( width + delX, minW ) + 'px'
 					style['height'] = lower( height + delY, minH ) + 'px'
 				}

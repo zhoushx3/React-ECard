@@ -10,7 +10,7 @@
 	// background-color #F2F5F6
 	background-color #000
 	overflow hidden
-	
+
 #canvas
 	width 320px
 	height 480px

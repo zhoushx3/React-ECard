@@ -40,7 +40,10 @@ const ControllerPanel = React.createClass({
 		let page = this.props.page
 		let element = this.props.element
 		let selectElementId = this.props.selectElementId
-		return <EditorPanel page={ page } element={ element } selectElementId={ selectElementId } />
+		if (this.state.panel == 'template' && selectElementId == -1)
+			return <TemplatePanel />
+		else
+			return <EditorPanel page={ page } element={ element } selectElementId={ selectElementId } />
 	},
 
 	panelBtns() {
@@ -56,6 +59,9 @@ const ControllerPanel = React.createClass({
 	},
 
 	showPanel(panel) {
+		this.setState({
+			panel: panel
+		})
 		switch (panel) {
 			case 'text':
 				EditorAction.addElement('text')
@@ -63,20 +69,11 @@ const ControllerPanel = React.createClass({
 			case 'pic':
 				EditorAction.addElement('pic')
 				break
-			default:
-				EditorAction.resetElementId(undefined)
-				this.setState({
-					panel: panel
-				})
+			case 'template':
+				EditorAction.resetElementId(-1) // -1 是专门为了显示templatepanel使用的
 				break
 		}
 	}
 })
 
 export default ControllerPanel;
-				// #controller
-				// 	component(v-if="selectid === undefined", :is="currentPanel")
-				// 	template(v-else)
-				// 		.container
-				// 			.flex-box.color
-				// 				color(v-for="color in colorTypes", :colortype="color", :element="element", :selectid="selectid")

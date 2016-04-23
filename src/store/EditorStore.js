@@ -19,6 +19,12 @@ class EditorStore {
 		window.json = this.json
 	}
 
+	getLocalJson() {
+		let s = window.localStorage.getItem('json')
+		if (s)
+			this.json = JSON.parse(s)
+	}
+
 	resetStore(json) {
 		this.json = json
 		this.getJson()
@@ -79,6 +85,7 @@ class EditorStore {
 	}
 
 	// 更新画布上选中的元素ID
+	// id == -1 时候 表示要显示 templatePanel
 	resetElementId(id) {
 		this.selectElementId = id
 		this.selectElement = id == undefined ? undefined : this.json.page[this.pageIndex].content[id]
@@ -92,7 +99,6 @@ class EditorStore {
 	}
 	// 添加元素
 	addElement(newElement) {
-		console.log(newElement)
 		let currentContent = this.json.page[this.pageIndex].content
 		let keys = Object.keys(currentContent)
 		let currentId = parseInt(keys[keys.length-1]) + 1 // 长度刚好是下一个元素在数组里的下标

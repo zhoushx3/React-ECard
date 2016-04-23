@@ -12,7 +12,7 @@ const MyVideo = React.createClass({
 
 		return (
 			<Wrapper element={ element } elementId={ elementId } selectElementId={ selectElementId }>
-				<video  controls="controls" preload="auto" width="600px" height="400px" src={ element.src }></video>
+				<video  controls="controls" preload="auto" width={ element.style.width } height={ element.style.height } src={ element.src }></video>
 			</Wrapper>
 		)
 	}

@@ -78,6 +78,10 @@
 			background-color #16E4D8
 			color #fff
 
+.flex-box.video-panel
+	width 100%
+
+
 #group
 	position absolute
 	right 300px
@@ -127,7 +131,8 @@
 	flex-direction row
 	flex-wrap wrap
 	justify-content space-around
-	align-content flex-start
+	align-items baseline
+	align-content	flex-start
 
 	div
 		width 40%
@@ -135,6 +140,8 @@
 		cursor pointer
 		img
 			width 100%
+		p 
+			text-align center
 	
 
 #editorPanel

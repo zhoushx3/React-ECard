@@ -46,11 +46,11 @@ const VideoPanel = React.createClass({
 		let files = this.refs.file.files
 		if (!files.length)
 			return
-		if (files[0].type.indexof('video') == -1)
+		if (files[0].type.indexOf('video') == -1)
 			return
 		this.setState({
 			// src: this.refs.file.files[0].getAsDataURL() 火狐7-
-			src: files[0].name, // 火狐7+
+			src: 'src/static/' + files[0].name, // 火狐7+
 			srcChanged: true
 		}, this.changeSource)
 	},

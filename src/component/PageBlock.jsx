@@ -1,4 +1,5 @@
 import EditorAction from '../action/EditorAction.js'
+import MiniCanvas from './CanvasElement/MiniCanvas.jsx'
 
 const PageBlock = React.createClass({
 	
@@ -14,8 +15,11 @@ const PageBlock = React.createClass({
 		let page = this.props.page
 		let pageIndex = this.props.pageIndex
 		return (
-			<div className="page-block" data-page={ pageIndex }>
-				<p>{ pageIndex + '内容' }</p>
+			<div>
+				<div className="page-block">
+					<MiniCanvas page={ page } />
+				</div>
+				<div className="cover" onClick={ this.preventInnerClick } data-page={ pageIndex }></div>
 			</div>
 		)
 	},
@@ -64,6 +68,11 @@ const PageBlock = React.createClass({
 	      reposition: true,
 	      autoHide: false,
 	    })
+	},
+
+	preventInnerClick(event) {
+		// event.stopPropagation()
+		// 防止在左侧修改了画布上的元素
 	}
 })
 

@@ -15,11 +15,12 @@ const TemplatePanel = React.createClass({
 
 	templateChoices() {
 		let self = this
-		let choices = ['flip_3D', 'form']
+		let choices = ['flip_3D', 'form', 'video']
 		return choices.map( function(type, index) {
 			return (
 				<div key={ index } onDoubleClick={ self.chooseTemplate.bind(self, type) }>
 					<img src={ `src/static/images/template_${type}.png` } alt={ type } />
+					<p>{ type }</p>
 				</div>
 			)
 		})

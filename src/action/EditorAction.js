@@ -180,9 +180,9 @@ function videoTemplate() {
   	src: "src/static/1.mp4",
     "style": {
       "left": 0,
-      "right": 0,
       "top": 0,
-      "bottom": 0,
+      "width": '200px',
+      "height": "300px",
       "zIndex": 3
     },
   	effect: {

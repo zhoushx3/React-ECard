@@ -34,7 +34,6 @@ const Percentage = React.createClass({
 		let max = this.state.max
 		let step = this.state.step
 		let name = this.state.name
-		console.log(value)
 		return (
 			<div className="flex-box percentage">
 				<label>{ name }</label>

@@ -9,7 +9,7 @@ import '../static/stylus/app.stylus'
 const JSON_DATA = 'json_data'
 const CANVAS = 'canvasPanel'
 
-const App = React.createClass({
+const App2 = React.createClass({
 	getInitialState() {
 		return {
 			json: Store.json,
@@ -20,6 +20,7 @@ const App = React.createClass({
 	},
 
 	componentDidMount() {
+		Store.getLocalJson()
 		Event.addChangeListener(JSON_DATA, this._getJson)
 		Store.getJson()
 	},
@@ -55,4 +56,4 @@ const App = React.createClass({
 	}
 })
 
-export default App;
+export default App2;

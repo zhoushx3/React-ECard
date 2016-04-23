@@ -3,11 +3,12 @@ import ElementAction from '../../action/ElementAction.js'
 const Size = React.createClass({
 
 	render() {
-		let width = parseInt(this.props.width)
-		let height = parseInt(this.props.height)
+		let element = this.props.element
+		let width = parseInt(element.style.width || 0)
+		let height = parseInt(element.style.height || 0)
 
 		return (
-			<div id="size" className="panel-sub">
+			<div className="panel-sub size">
 				<div className="flex-box">
 					<label>宽度</label>
 					<input type="number" value={width} onChange={ ElementAction.setStyle.bind(ElementAction, 'width') } />

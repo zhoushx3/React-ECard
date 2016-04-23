@@ -32,7 +32,7 @@ const Color = React.createClass({
 					newType = ['style.backgroundColor']
 				break
 			case 'text':
-				newType = ['style.color']
+				newType = ['style.color', 'style.backgroundColor']
 				break
 			default:
 				break

@@ -197,7 +197,8 @@
 			justify-content space-around
 
 // 位置板块
-.position.panel-sub
+.position.panel-sub,
+.size.panel-sub
 	width 100%
 	.flex-box
 		width 50% !important
@@ -229,6 +230,18 @@
 		height 40px
 		line-height 40px
 	
+// 文字内容
+.flex-box.text-content
+	width 100%
+	textarea
+		width 75%
+		height 100px
+		resize none
+		border-radius 2px
+		border 1px solid #ececec
+		
+.flex-box.text-font
+	width 100%
 #other-panel
 	.flex-box
 		width 100% !important
@@ -250,16 +263,16 @@
 	
 
 // 文字对齐板块
-#text-align
+.text-align.flex-box
 	width 100%
 
-	.flex-box div
+	 div
 		width 33.3333%
 		border-radius 2px
-		border 1px solid #ececec
 		text-align center
 		font-size 12px
 		cursor pointer
+		background-color #fff
 		
 		&.active
 			background-color #16E4D8
@@ -272,14 +285,7 @@
 			width 40%
 		input 
 			width 50%
-// 文字内容
-#text-content
-	textarea
-		width 100%
-		height 100px
-		resize none
-		border-radius 2px
-		border 1px solid #ececec
+
 	
 
 // 特效版块

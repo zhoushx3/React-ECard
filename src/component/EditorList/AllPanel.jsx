@@ -19,7 +19,10 @@ const AllPanel = React.createClass({
 
 		return (
 			<div className="tab-item">
+				<Font element={ element } selectElementId={ selectElementId }/>
+				<TextAlign element={ element } selectElementId={ selectElementId }/>
 				<Color element={ element } selectElementId={ selectElementId } />
+				<Size element={ element } selectElementId={ selectElementId }/>
 				<Position element={ element } selectElementId={ selectElementId } />
 				<PicPanel element={ element } selectElementId={ selectElementId } />
 				<VideoPanel element={ element } selectElementId={ selectElementId } />
@@ -31,11 +34,3 @@ const AllPanel = React.createClass({
 })
 
 export default AllPanel
-
-
-
-{/*				<Percentage type="opacity" value={ element.style.opacity } />
-				<Font element={ element } elementId={ elementId }/>
-				<TextAlign element={ element } elementId={ elementId }/>
-				<Size element={ element } elementId={ elementId }/>
-				<Position element={ element } elementId={ elementId }/>*/}

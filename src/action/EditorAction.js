@@ -104,6 +104,7 @@ function textTemplate() {
 			textAlign: 'center',
 			lineHeight: '20px',
 			letterSpacing: '4px',
+			backgroundColor: '#fff'
 		},
 		effect: {
 			in: {

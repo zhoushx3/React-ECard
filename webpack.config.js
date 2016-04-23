@@ -2,10 +2,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	entry: {
-		main: './src/index.jsx'
+		main: './src/index.jsx',
+		viewer: './src/index2.jsx'
 	},
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].[hash].bundle.js',
 		path: 'build',
 		// publicPath: 'build'
 	},
@@ -34,6 +35,31 @@ module.exports = {
 		}, {
 			test: /.jade/,
 			loader: 'jade-loader'
+		}, {
+			test: /\.(woff|woff2)(\?)?/,
+			loader: "url-loader?limit=10000&mimetype=application/font-woff"
+		}, {
+      test: /\.ttf(\?)?/,
+			loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+		}, {
+      test: /\.eot(\?)?/,
+			loader: "file-loader"
+		}, {
+			test: /\.svg$/,
+			loader: "url-loader?limit=10000&mimetype=image/svg+xml" 
 		}]
-	}
+	},
+	plugins: [new HtmlWebpackPlugin({
+		template: './index.html',
+		filename: 'index.html',
+		inject: 'body',
+		chunks: ['main'],
+		cache: false
+	}), new HtmlWebpackPlugin({
+		template: './viewer.html',
+		filename: 'viewer.html',
+		inject: 'body',
+		chunks: ['viewer'],
+		cache: false
+	})]
 }

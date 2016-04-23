@@ -5,7 +5,7 @@ const Header = React.createClass({
 	render() {
 		return (
 			<div className="header">
-				<h1>hello man</h1>
+				<button>预览</button>
 			</div>
 		)
 	}

@@ -40,9 +40,9 @@
 
 			.page-num
 				position absolute
-				left 130px
+				right 0
 				top 15px
-				width 15px
+				width 20px
 				height 15px
 				color #000
 				font-size 20px
@@ -62,3 +62,11 @@
 		text-align center
 		color #fff
 
+.page-block
+	position absolute
+	left 10px
+	right 20px
+	top 10px
+	bottom 10px
+	background-color #fff
+	cursor pointer

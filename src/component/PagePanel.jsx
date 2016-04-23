@@ -1,4 +1,5 @@
 import PageBlock from './PageBlock.jsx'
+import EditorAction from '../action/EditorAction.js'
 
 import '../static/stylus/pagePanel.stylus'
 
@@ -16,10 +17,12 @@ const PagePanel = React.createClass({
 	},
 
 	render() {
-		let page = this.props.json.page.map( (page, index)=>{
+		let pages = this.props.json.page
+		let currentPageIndex = this.props.pageIndex
+		let page = pages.map( (page, index)=>{
 			return (
-				<li key={ 'page_'+index }>
-					<PageBlock page={page} />
+				<li key={ 'page_'+index } className={ index == currentPageIndex ? 'active' : '' } onClick={ this.changePage.bind(this, index) }>
+					<PageBlock page={page} pageIndex={index} pageNum={pages.length} />
 					<div className="page-num">{ index+1 }</div>
 				</li>
 			)
@@ -31,9 +34,17 @@ const PagePanel = React.createClass({
 				<ul id="page-container">
 					{ page }
 				</ul>
-				<div id="add-blank-page">+</div>
+				<div id="add-blank-page" onClick={ this.addPage }>+</div>
 			</div>
 		)
+	},
+
+	addPage() {
+		EditorAction.addPage()
+	},
+
+	changePage(pageIndex) {
+		EditorAction.changePage(pageIndex)
 	}
 })
 

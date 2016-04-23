@@ -5,6 +5,8 @@ import TextAlign from './TextAlign.jsx'
 import Percentage from './Percentage.jsx'
 import Color from './Color.jsx'
 import PicPanel from './PicPanel.jsx'
+import VideoPanel from './VideoPanel.jsx'
+
 
 const AllPanel = React.createClass({
 	propTypes: {
@@ -20,6 +22,7 @@ const AllPanel = React.createClass({
 				<Color element={ element } selectElementId={ selectElementId } />
 				<Position element={ element } selectElementId={ selectElementId } />
 				<PicPanel element={ element } selectElementId={ selectElementId } />
+				<VideoPanel element={ element } selectElementId={ selectElementId } />
 				<Percentage type="rotate" element={ element } selectElementId={ selectElementId } />
 				<Percentage type="opacity" element={ element } selectElementId={ selectElementId } />
 			</div>

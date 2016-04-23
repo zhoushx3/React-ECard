@@ -41,7 +41,7 @@ export default {
 	// zoomInLeft: '放大3', 
 	// zoomInRight: '放大4', 
 	// zoomInUp: '放大5',
-	hinge: '掉了',
+	// hinge: '掉了',
 	rollIn: '转入',
 }
 // 后备

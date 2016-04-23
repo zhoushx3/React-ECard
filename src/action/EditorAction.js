@@ -25,6 +25,9 @@ class EditorAction {
 			case 'form':
 				Store.addElement(formTemplate())
 			break
+			case 'video':
+				Store.addElement(videoTemplate())
+			break
 		}
 	}
 	/*
@@ -65,6 +68,25 @@ class EditorAction {
 				}
 			}
 		})
+	}
+	// 添加新页
+	addPage() {
+		Store.addPage(newPage())
+	}
+	// 切换当前显示的页面
+	changePage(pageIndex) {
+		Store.setPageIndex(pageIndex)
+	}
+	// 删除指定页面 
+	deletePage(pageIndex) {
+		Store.deletePage(pageIndex)
+	}
+	// 移动指定页面
+	movePage(pageIndex, direction) {
+		Store.movePage(pageIndex, direction)
+	}
+	changePageEffect(effect) {
+		Store.changePageEffect(effect)
 	}
 }
 
@@ -149,6 +171,48 @@ function formTemplate() {
 				effect: 'bounceIn'
 			}
 		},
+	}
+}
+
+function videoTemplate() {
+	return {
+  	type: 'video',
+  	src: "src/static/1.mp4",
+    "style": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "zIndex": 3
+    },
+  	effect: {
+			in: null
+		}
+  }
+}
+
+// 添加新页面初始化有章背景
+function newPage() {
+	return  {
+		content: {
+      "0": {
+        "type": "background",
+        "backgroundEffect": {
+        	enable: false,
+        	light: '#111122',
+        	back: '#FF0022'
+        }, // 背景特效
+        "style": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "backgroundColor": "#fff",
+          "zIndex": 0
+        }
+      }
+		},
+		pageEffect: ''
 	}
 }
 

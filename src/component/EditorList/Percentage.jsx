@@ -34,6 +34,7 @@ const Percentage = React.createClass({
 		let max = this.state.max
 		let step = this.state.step
 		let name = this.state.name
+		console.log(value)
 		return (
 			<div className="flex-box percentage">
 				<label>{ name }</label>
@@ -56,13 +57,13 @@ const Percentage = React.createClass({
 				name = '透明度'
 				max = 100
 				value = style['opacity']
-				value = value ? Math.floor(Number(value)*100) : 100
+				value = value == undefined ? 100 : Math.floor(Number(value)*100)
 				break
 			case 'rotate':
 				name = '旋转'
 				max = 360
 				value = style['transform']
-				value = value ? parseInt(value.replace(/[rotate()deg]/ig, '')) : 0
+				value = value == undefined ? 0 : parseInt(value.replace(/[rotate()deg]/ig, ''))
 				break
 		}
 		let o =  {

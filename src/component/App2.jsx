@@ -1,12 +1,6 @@
-import Header from './Header.jsx'
-import PagePanel from './PagePanel.jsx'
-import CanvasPanel from './CanvasElement/CanvasPanel.jsx'
-import ControllerPanel from './EditorList/ControllerPanel.jsx'
-
+import CanvasPanel2 from './CanvasElement/CanvasPanel2.jsx'
 import EditorAction from '../action/EditorAction.js'
 import Event from '../Event.js'
-import dragEvent from '../util/dragEvent.js'
-import flexEvent from '../util/flexEvent.js'
 import Store from '../store/EditorStore.js'
 
 import '../static/stylus/app.stylus'
@@ -28,8 +22,6 @@ const App = React.createClass({
 	componentDidMount() {
 		Event.addChangeListener(JSON_DATA, this._getJson)
 		Store.getJson()
-		window.dragEvent = new dragEvent(CANVAS)
-		window.flexEvent = new flexEvent(CANVAS)
 	},
 
 	componentWillUnmount() {
@@ -48,19 +40,16 @@ const App = React.createClass({
 
 	render() {
 		let json = this.state.json
+		let pageNum = json.page.length
 		let pageIndex = this.state.pageIndex
 		let page = json.page[pageIndex]
+		let pageEffect = page.pageEffect + ' animated'
 		let selectElementId = this.state.selectElementId
 		let element = this.state.selectElement
-		// console.log(selectElementId)
+
 		return (
-			<div>
-				<Header />
-				<div id="container">
-					<PagePanel json={ json } pageIndex={ pageIndex }/>
-					<CanvasPanel page={ page } selectElementId={ selectElementId } />
-					<ControllerPanel page={ page } element={ element } selectElementId={ selectElementId } />
-				</div>
+			<div className={ pageEffect }>
+				<CanvasPanel2 page={ page } pageIndex={ pageIndex } pageNum={ pageNum } selectElementId={ selectElementId } />
 			</div>
 		)
 	}

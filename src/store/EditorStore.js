@@ -9,13 +9,19 @@ const JSON_DATA = 'json_data'
 class EditorStore {
 	constructor() {
 		// 初始化应该从用户的项目数据里读取，暂时是读取fake数据
-		window.store = this
+		window.resetStore = this.resetStore.bind(this)
 		this.json = fakeJson
 		this.pageIndex = 0
 		this.selectElementId = undefined
 		this.selectElement = this.selectElementId === undefined ? undefined
 											 : this.json.page[this.pageIndex].content[this.selectElementId]
 		//undefined表示未选择元素
+		window.json = this.json
+	}
+
+	resetStore(json) {
+		this.json = json
+		this.getJson()
 	}
 
 	getJson() {
@@ -33,12 +39,45 @@ class EditorStore {
 		return sum
 	}
 
+	addPage(newPage) {
+		this.json.page.push(newPage)
+		this.setPageIndex(this.json.page.length-1)
+	}
+
 	setPageIndex(index) {
 		this.pageIndex = index
 		this.selectElementId = undefined
 		this.selectElement = undefined
 		this.getJson()
 	}
+
+	// 删除指定页面 
+	deletePage(pageIndex) {
+		this.json.page.splice(pageIndex, 1)
+		this.setPageIndex(pageIndex == 0 ? 0 : pageIndex - 1 )
+	}
+
+	// 移动指定页面
+	movePage(pageIndex, direction) {
+		let page = this.json.page[pageIndex]
+		if (direction == 1) {
+			this.json.page.splice(pageIndex, 1)
+			this.json.page.splice(pageIndex+1, 0, page)
+			this.setPageIndex(pageIndex+1)
+		} else {
+			this.json.page.splice(pageIndex, 1)
+			this.json.page.splice(pageIndex-1, 0, page)
+			this.setPageIndex(pageIndex-1)
+		}
+	}
+	// 页面入场动画
+	changePageEffect(effect) {
+		let page = this.json.page[this.pageIndex]
+		page['pageEffect'] = effect
+		this.json.page[this.pageIndex] = Object.assign({}, page)
+		this.getJson()
+	}
+
 	// 更新画布上选中的元素ID
 	resetElementId(id) {
 		this.selectElementId = id

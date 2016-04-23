@@ -31,6 +31,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.6.1",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.10.0",
     "jade": "^1.11.0",
@@ -42,10 +43,12 @@
     "style-loader": "^0.13.0",
     "stylus": "^0.54.2",
     "stylus-loader": "^1.5.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "flux": "^2.1.1"
+    "flux": "^2.1.1",
+    "mo-js": "^0.147.4"
   }
 }

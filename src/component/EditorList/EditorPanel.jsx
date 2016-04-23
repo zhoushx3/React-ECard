@@ -3,6 +3,7 @@ import FormPanel from './FormPanel.jsx'
 import OtherPanel from './OtherPanel.jsx'
 import EffectPanel from './EffectPanel.jsx'
 import Flip3DPanel from './Flip3DPanel.jsx'
+import PageEffectPanel from './PageEffectPanel.jsx'
 
 const EditorPanel = React.createClass({
 
@@ -29,6 +30,7 @@ const EditorPanel = React.createClass({
 	render() {
 		let element = this.props.element
 		let selectElementId = this.props.selectElementId
+		let page = this.props.page
 		let tool = null
 		let other = null
 		let effect = null
@@ -49,13 +51,16 @@ const EditorPanel = React.createClass({
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 						"2": <OtherPanel element={ element } selectElementId={ selectElementId } />,
 					}
+					tabs = ['基本', '入场', '特效']
 					break
 				case 'pic':
+				case 'video':
+				case 'audio':
 					tabItem = {
 						"0": <AllPanel element={ element } selectElementId={ selectElementId } />,
 						"1": <EffectPanel element={ element } selectElementId={ selectElementId } />,
 					}
-					tabs = ['基本', '入场', '特效']
+					tabs = ['基本', '入场']
 					break
 				case 'flip3D':
 					tabItem = {
@@ -72,12 +77,16 @@ const EditorPanel = React.createClass({
 					tabs = ['基本', '入场']
 					break
 			}
-
-			tabs = tabs.map( (item, i)=>{
-				let className = i == this.state.tab ? 'active' : ''
-				return <div className={ className } onClick={ this.changeTab.bind(null, i) } key={ i }>{ item }</div>
-			})
+		} else {
+			tabItem = {
+				"0": <PageEffectPanel page={ page } />,
+			}
+			tabs = ['页面入场动画']
 		}
+		tabs = tabs.map( (item, i)=>{
+			let className = i == this.state.tab ? 'active' : ''
+			return <div className={ className } onClick={ this.changeTab.bind(null, i) } key={ i }>{ item }</div>
+		})
 
 		return (
 			<div id="editorPanel">

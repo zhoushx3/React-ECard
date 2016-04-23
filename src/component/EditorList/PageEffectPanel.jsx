@@ -1,13 +1,10 @@
 import '../../lib/animate.css'
 import animateName from '../../lib/animateName.js'
-import ElementAction from '../../action/ElementAction.js'
+import EditorAction from '../../action/EditorAction.js'
 import Percentage from './Percentage.jsx'
 
 // 过场动画
-const EffectPanel = React.createClass({
-	propTypes: {
-		element: React.PropTypes.object.isRequired
-	},
+const PageEffectPanel = React.createClass({
 
 	componentDidMount() {
 		$('.animated.effectModule').bind('webkitAnimationEnd', function(event) {
@@ -27,18 +24,15 @@ const EffectPanel = React.createClass({
 	},
 
 	render() {
-		let element = this.props.element
-		let elementId = this.props.elementId
-		let className = this.props.className
-		let eleffect = element.effect
-				eleffect = eleffect['in'] ? ( eleffect['in']['effect'] ? eleffect['in']['effect'] : undefined ) : undefined
+		let page = this.props.page
+		let eleffect = page.pageEffect || ''
 		let effectKey = Object.keys(animateName)
-
+		let className = ''
 		let inEffect = effectKey.map( (effect, i)=>{
 			let c = eleffect == effect ? 'animated effectModule active' : 'animated effectModule'
 			return <div className={ c }
 									onMouseEnter={ this.addEffect.bind(null, effect) }
-									onClick={ ElementAction.changeEffect.bind(ElementAction, effect, 'in') }
+									onClick={ EditorAction.changePageEffect.bind(EditorAction, effect) }
 									key={i}>{ animateName[effect] }</div>
 		})
 
@@ -52,4 +46,4 @@ const EffectPanel = React.createClass({
 	}
 })
 
-export default EffectPanel
+export default PageEffectPanel

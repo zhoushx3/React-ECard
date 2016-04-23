@@ -18,22 +18,23 @@ var json = {
           "zIndex": 0
         }
       },
-			// "1": {
-			// 	type: 'flip3D',
-			// 	style: {
-			// 		left: '100px',
-			// 		top: '100px',
-			// 		width: '200px',
-			// 		height: '300px',
-			// 	},
-			// 	src: 'src/static/images/1.jpg',
-			// 	text: 'mouse',
-			// 	effect: {
-			// 		in: null
-			// 	}
-			// }
+			"1": {
+				type: 'flip3D',
+				style: {
+					left: '100px',
+					top: '100px',
+					width: '200px',
+					height: '300px',
+				},
+				src: 'src/static/images/1.jpg',
+				text: 'mouse',
+				effect: {
+					in: null
+				}
+			}
+
 		},
-		pageEffect: ''
+		pageEffect: 'rollIn'
 	}],
 	version: 1
 }

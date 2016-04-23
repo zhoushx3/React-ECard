@@ -45,10 +45,8 @@ class EditorAction {
 		if (!this.copyElement) 
 			return false
 		let newElement = Func.deepCopy(this.copyElement)
-		newElement.position = {
-			left: parseInt(newElement.position.left)+40+'px',
-			top: parseInt(newElement.position.top)+40+'px'
-		}
+		newElement.left = parseInt(newElement.style.left)+40+'px',
+		newElement.top = parseInt(newElement.style.top)+40+'px'
 		// this.copyElement = null
 		Store.addElement(newElement)
 	}

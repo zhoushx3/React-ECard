@@ -3,8 +3,6 @@ import '../../lib/jquery.lettering.js'
 import '../../lib/jquery.textillate.js'
 import Wrapper from '../Wrapper.jsx'
 
-import { deepCompare } from '../../util/func.js'
-
 const Text = React.createClass({
 	propTypes: {
 		element: React.PropTypes.object.isRequired

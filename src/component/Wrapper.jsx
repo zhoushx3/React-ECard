@@ -16,7 +16,102 @@ const Wrapper = React.createClass({
 		}
 	},
 
-	componentDidMount() {},
+	componentDidMount() {
+		if ( this.props.viewer )
+			return
+
+		let self = this
+		let element = this.props.element
+		let elementId = this.props.elementId
+		let zIndex = parseInt(element.style.zIndex || 0)
+		let type = element.type
+		if (type === 'background') {
+			$.contextMenu({
+	      selector: `[data-key=${elementId}]`,
+	      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
+	      className: 'contextmenu-custom contextmenu-custom__highlight',
+				zIndex: ()=>{
+					return 999
+				},
+				items: {
+					paste: {
+						name: '粘贴',
+						disabled:()=>{
+							return EditorAction.copyElement == null
+						},
+						callback: (key, opt) => {
+							EditorAction.paste()
+						}
+					}
+				}
+			})
+		} else {
+	    $.contextMenu({
+	      selector: `[data-key=${elementId}]`,
+	      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
+	      className: 'contextmenu-custom contextmenu-custom__highlight',
+	      zIndex: function() {
+	      	return zIndex + 1
+	      },
+	      items: {
+	        copy: {
+	          name: '复制',
+	          callback: (key, opt) => {
+	          	EditorAction.preCopy(element)
+	          }
+	        },
+	        delete: {
+	        	name: '删除',
+	        	callback: () => {
+	        		EditorAction.deleteElement(elementId)
+	        	}
+	        },
+	        moveUp: {
+	        	name: '上移一层',
+	        	callback:(key, opt)=>{
+	        		self.moveZIndex(1)
+	        	}
+	        },
+	        moveDown: {
+	        	name: '下移一层',
+	        	disabled: ()=>{
+	      			return zIndex === 0
+	        	},
+	        	callback:()=>{
+	        		this.moveZIndex(-1)
+	        	}
+	        },
+	        moveBottom: {
+	        	name: '下移至底层',
+	        	callback:()=>{
+	        		this.moveZIndex(0)
+	        	}
+	        }
+	      },
+	      trigger: 'right',
+	      reposition: true,
+	      autoHide: false,
+	    })
+		}
+
+	},
+
+	moveZIndex(n) {
+		let element = this.props.element
+		let zIndex = parseInt(element.style.zIndex || 0)
+		EditorAction.resetElementId(this.props.elementId)
+		switch(n) {
+			case -1:
+				ElementAction.setStyle('zIndex', zIndex-1)
+				break
+			case 1:
+				ElementAction.setStyle('zIndex', zIndex+1)
+				break
+			case 0:
+				ElementAction.setStyle('zIndex', 0)
+				break
+		}
+	},
 
 	componentDidUpdate() {},
 
@@ -83,7 +178,7 @@ const Wrapper = React.createClass({
 		let effectIn = effect['in'] ? ( effect['in']['effect'] ? effect['in']['effect']+' animated' : '' ) : ''
 		// effectIn 不直接赋在最外层div是因为如果style中存在transform属性，会被覆盖
 		return (
-			<div className={ className } style={ style } onClick={ this.setElementId } onMouseDown={ this.drag } ref="wrapper">
+			<div className={ className } data-key={ elementId } style={ style } onClick={ this.setElementId } onMouseDown={ this.drag } ref="wrapper">
 				<div className={ effectIn } style={ {width: '100%', height: '100%', overflow: 'hidden'} }>
 					{ this.props.children }
 				</div>

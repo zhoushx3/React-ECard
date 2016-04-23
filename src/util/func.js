@@ -1,22 +1,22 @@
-export function px(n) {
+function px(n) {
 	return (typeof n === 'number' || typeof n === 'string') ? parseInt(n)+'px' : 0
 }
 
-export function lower(n, limit) {
+function lower(n, limit) {
 	return n <= limit ? limit : n
 }
 
-export function upper(n, limit) {
+function upper(n, limit) {
 	return n <= limit ? n : limit
 }
 
 // 勾股定理
-export function gouGu(x, y) {
+function gouGu(x, y) {
 	return Math.sqrt( Math.pow(x, 2) + Math.pow(y, 2))
 }
 
 // 拷贝对象
-export function deepCopy(source) {
+function deepCopy(source) {
 	if ( typeof source !== 'object' || source === null)
 		return source
 
@@ -30,7 +30,7 @@ export function deepCopy(source) {
 }
 
 // 比较 true: 值相同
-export function deepCompare(comp1, comp2) {
+function deepCompare(comp1, comp2) {
 	if ( typeof comp1 !== 'object' || comp1 === null ) {
 		return comp1 === comp2
 	}
@@ -62,4 +62,14 @@ export function deepCompare(comp1, comp2) {
 
 function isArray(obj) {  
   return Object.prototype.toString.call(obj) === '[object Array]';   
+}
+
+export default {
+	px: px,
+	lower: lower,
+	upper: upper,
+	gouGu: gouGu,
+	deepCopy: deepCopy,
+	deepCompare: deepCompare,
+	isArray: isArray
 }

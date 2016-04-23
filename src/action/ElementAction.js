@@ -2,7 +2,7 @@
 
 import Constant from '../constant/editorConstant.js'
 import Store from '../store/EditorStore.js'
-import { upper, lower, deepCopy, gouGu } from '../util/func.js'
+import Func from '../util/func.js'
 
 class ElementAction {
 	constructor() {}
@@ -40,23 +40,23 @@ class ElementAction {
 
 		switch (direction) {
 			case 'w':
-				style['left']  = upper( left + delX, left + width - minW ) + 'px'
-				style['width'] = lower( width - delX, minW ) + 'px'
+				style['left']  = Func.upper( left + delX, left + width - minW ) + 'px'
+				style['width'] = Func.lower( width - delX, minW ) + 'px'
 			break
 			case 'e':
-				style['width'] = lower( width + delX, minW ) + 'px'
+				style['width'] = Func.lower( width + delX, minW ) + 'px'
 			break
 			case 'n':
-				style['top'] = upper( top + delY, top + height - minH ) + 'px'
-				style['height']  = lower ( height - delY, minH ) + 'px'
+				style['top'] = Func.upper( top + delY, top + height - minH ) + 'px'
+				style['height']  = Func.lower ( height - delY, minH ) + 'px'
 			break
 			case 's':
-				style['height'] = lower( height + delY, minH ) + 'px'
+				style['height'] = Func.lower( height + delY, minH ) + 'px'
 			break
 			case 'se':
 				if ( ['flip3D', 'pic', 'video'].indexOf(type) > -1 ) {
-					style['width'] = lower( width + delX, minW ) + 'px'
-					style['height'] = lower( height + delY, minH ) + 'px'
+					style['width'] = Func.lower( width + delX, minW ) + 'px'
+					style['height'] = Func.lower( height + delY, minH ) + 'px'
 				}
 				break
 		}
@@ -66,7 +66,7 @@ class ElementAction {
 	// 添加过场动画效果
 	// 深复制是为了做 componentShouldUpdate()的判断, 下同
 	changeEffect(effect, way) {
-		let element = deepCopy(Store.selectElement)
+		let element = Func.deepCopy(Store.selectElement)
 
 		if (element.effect[way])
 			element.effect[way]['effect'] = effect
@@ -78,7 +78,7 @@ class ElementAction {
 	}
 	// 添加文字特效
 	changeLetteringEffect(effect, delay, initDelay) {
-		let element = deepCopy(Store.selectElement)
+		let element = Func.deepCopy(Store.selectElement)
 
 		if (effect == null)
 			element.lettering = null
@@ -115,6 +115,7 @@ class ElementAction {
 			case 'textAlign':
 			case 'backgroundColor':
 			case 'color':
+			case 'zIndex':
 				ele.style[property] = event
 				break
 			case 'backgroundEffectEnable':
